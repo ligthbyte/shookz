@@ -564,7 +564,8 @@ body{
   height: 100%;
   z-index: 1;
   content: "";
-  background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
+  -webkit-background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
+          background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
 }
 .help-request-box .inner-help-request-box{
   z-index: 10;
