@@ -1,0 +1,29 @@
+<div class="login-page">
+
+  <!-- Top Background -->
+  <div class="top-bg">
+    <img class="top-logo" src="./img/login-top-logo.png">
+  </div>
+
+  <!-- Facebook Section -->
+  <div class="fb-section">
+    <button class="fb-login-btn" ng-click="fbLoginUser()" type="button">
+      <i class="fa fa-facebook-square"></i>
+      התחבר באמצעות פייסבוק
+    </button>
+    <span class="under-label">לעולם אנחנו לא נפרסם בשמך</span>
+  </div>
+
+  <!-- Email & Password Section -->
+  <div class="email-and-pass-section">
+    <h2>התחבר באמצעות</h2>
+    <form>
+      <input class="form-field" ng-model="user.email" type="text" placeholder="כתובת אימייל">
+      <input class="form-field" ng-model="user.password" type="password" placeholder="סיסמא">
+    </form>
+    <div class="login-error-msg" ng-show="loginErrorMsg">{{ loginErrorMsg }}</div>
+    <button class="login-btn btn-blue" ng-click="loginUser()" type="button">המשך</button>
+    <button class="register-btn btn-purple" ng-click="goToRegister()" type="button">אני משתמש חדש, הרשם</button>
+  </div>
+
+</div>

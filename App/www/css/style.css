@@ -1,0 +1,532 @@
+*{
+  -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body{
+  direction: rtl;
+  font-family: 'Varela Round', sans-serif;
+  -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+  user-select: none;
+}
+.btn-blue{
+  display: block;
+  margin: 0 auto;
+  padding: 8px 0;
+  width: 30%;
+  min-width: 100px;
+  max-width: 200px;
+  color: white;
+  font-size: 110%;
+  text-align: center;
+  background-color: #0396ff; /*Gradient Fallback*/
+  -webkit-background: linear-gradient(#62bcfd, #0396ff);
+  background: linear-gradient(#62bcfd, #0396ff);
+  border-radius: 4px;
+}
+.btn-purple{
+  display: block;
+  margin: 0 auto;
+  padding: 8px 0;
+  width: 90%;
+  min-width: 270px;
+  max-width: 500px;
+  color: white;
+  font-size: 110%;
+  text-align: center;
+  background-color: #24327d; /*Gradient Fallback*/
+  -webkit-background: linear-gradient(#3e1a80, #24327d);
+  background: linear-gradient(#3e1a80, #24327d);
+  border-radius: 4px;
+}
+
+
+/* Loader */
+#loader-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  -webkit-transition: .4s all;
+  transition: .4s all;
+}
+#loader-container.hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+#loader-container #loader{
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -25px;
+    z-index: 1;
+    background: transparent;
+    border-radius: 50%;
+    border: 25px solid;
+    border-color: #ffca28 #eeff41 #00bcd4 #1de9b6;
+    -webkit-animation: rotateLoader .5s infinite linear;
+    animation: rotateLoader .5s infinite linear;  
+}
+@-webkit-keyframes rotateLoader{
+  0%{
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg)
+  }
+  to{
+    -webkit-transform:rotate(1turn);
+    transform:rotate(1turn)
+  }
+}
+@keyframes rotateLoader{
+  0%{
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg)
+  }
+  to{
+    -webkit-transform:rotate(1turn);
+    transform:rotate(1turn)
+  }
+}
+
+
+/* Login Page */
+.login-page .top-bg{
+  position: relative;
+  height: 35vh;
+  background-image: url('../img/login-top-bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.login-page .top-bg .top-logo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  max-width: 300px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.login-page .fb-section{
+  padding: 3vh 0;
+  text-align: center;
+  border-bottom: 1px solid rgb(225, 225, 225);
+}
+.login-page .fb-section .fb-login-btn{
+  position: relative;
+  display: block;
+  width: 90%;
+  min-width: 270px;
+  max-width: 500px;
+  background-color: #1c345d;
+  color: white;
+  font-size: 110%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px 0;
+  margin-bottom: 1vh;
+  border-radius: 4px;
+}
+.login-page .fb-section .fb-login-btn i{
+  position: absolute;
+  left: 12px;
+  font-size: 130%;
+}
+.login-page .fb-section .under-label{
+  color: rgb(130, 130, 130);
+  font-weight: bold;
+}
+.login-page .email-and-pass-section h2{
+  display: block;
+  text-align: center;
+  color: #1c345d;
+  font-size: 140%;
+  font-weight: bold;
+  margin: 3vh 0;
+}
+.login-page .email-and-pass-section .form-field{
+  display: block;
+  background-color: rgb(235, 235, 235);
+  padding: 7px 12px;
+  border-radius: 4px;
+  width: 90%;
+  min-width: 270px;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 2vh;
+}
+.login-page .email-and-pass-section .login-error-msg{
+  color: #d80303;
+  font-size: 90%;
+  text-align: center;
+  margin-bottom: -1vh;
+}
+.login-page .email-and-pass-section .login-btn{
+  margin: 2.5vh auto;
+}
+.login-page .email-and-pass-section .register-btn{
+  margin-bottom: 2vh;
+}
+
+/* Register Page */
+.register-page{
+  font-weight: bold;
+  color: rgb(70, 70, 70);
+  width: 95%;
+  margin: 0 auto;
+}
+.register-page .top-strip{
+  background-color: #232b42;
+  color: white;
+  margin: 0 -2.5%;
+}
+.register-page .top-strip .fa.fa-chevron-right{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 170%;
+  padding: 18px;
+}
+.register-page .top-strip h1{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 140%;
+}
+.register-page .top-title{
+  text-align: center;
+  margin-top: 20px;
+}
+.register-page .top-title:after{
+  display: block;
+  background-color: black;
+  height: 1px;
+  width: 25px;
+  margin: 25px auto;
+  content: '';
+}
+.register-page .top-title h2{
+  display: block;
+  font-size: 120%;
+  margin-bottom: 5px;
+}
+.register-page .top-title h3{
+  opacity: .6;
+  font-size: 90%;
+}
+.register-page form .image-selector h3:nth-child(1){
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.register-page form .image-selector h3:nth-child(2){
+  text-align: center;
+  font-size: 90%;
+  opacity: .6;
+  margin-bottom: 20px;
+}
+.register-page form .image-selector .avatars{
+  width: 100%;
+  max-width: 350px;
+  text-align: right;
+  margin: 0 auto;
+}
+.register-page form .image-selector .avatars .avatar{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(20% - 10px);
+  padding-bottom: calc(20% - 14px);
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 2px solid rgb(220, 220, 220);
+}
+.register-page form .image-selector .avatars .avatar.selected{
+  border: 2px solid #3a6598;
+}
+.register-page form .image-selector .avatars .avatar.selected:after{
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  background-color: #3a6598;
+  font-family: 'FontAwesome', serif;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+  font-size: 80%;
+  line-height: 1.65;
+  content: '\f00c';
+}
+.register-page form .image-selector .avatars label.avatar{
+  text-align: center;
+  background-color: #0878c6;
+  color: white;
+}
+.register-page form .image-selector .avatars label.avatar.selected{
+  background-color: white;
+}
+.register-page form .image-selector .avatars label.avatar .inner{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.register-page form .image-selector .avatars label.avatar i{
+  display: block;
+  margin-bottom: 2px;
+  font-size: 110%;
+}
+.register-page form .image-selector .avatars label.avatar span{
+  font-size: 70%;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+.register-page form .field-box{
+  margin: 25px 0;
+}
+.register-page form .field-box.error .field-title{
+  color: #DD0000;
+}
+.register-page form .field-box .field-title{
+  display: block;
+  margin-bottom: 2px;
+  opacity: .6;
+}
+.register-page form .field-box.birth-date .field-title{
+  display: inline-block;
+  vertical-align: middle;
+}
+.register-page form .field-box.gender .field-title{
+  margin-bottom: 6px;
+}
+.register-page form .field-box.gender .gender-btn{
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+  background-color: rgb(170, 170, 170);
+  color: white;
+  padding: 4px 11px;
+  letter-spacing: .5px;
+  font-size: 120%;
+  border-radius: 4px;
+  -webkit-transition: .3s all;
+  -moz-transition: .3s all;
+  transition: .3s all;
+}
+.register-page form .field-box.gender .gender-btn.selected{
+  background-color: #3a6598;
+}
+.register-page form .field-box.gender .gender-btn.selected:after{
+  position: absolute;
+  left: -10px;
+  bottom: -9px;
+  background-color: #3a6598;
+  font-family: 'FontAwesome', serif;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  font-size: 70%;
+  line-height: 1.55;
+  -webkit-transition: .3s all;
+  -moz-transition: .3s all;
+  transition: .3s all;
+  content: '\f00c';
+}
+.register-page form .field-box.gender input[type="radio"]{
+  display: none;
+}
+.register-page form .field-box .field{
+  display: block;
+  width: 100%;
+  padding: 5px 0;
+  font-size: 120%;
+  border: 0;
+  border-bottom: 2px solid rgb(100, 100, 100);
+}
+.register-page form .field-box.birth-date input{
+    background-color: rgb(220, 220, 220);
+    display: inline-block;
+    width: 150px;
+    padding: 7px 0;
+    text-align: center;  
+    margin-right: 5px;
+}
+.register-page form .error-msg{
+  color: #DD0000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.register-page form .register-btn{
+  margin-bottom: 20px;
+}
+.register-page form .bottom-decleration{
+  display: block;
+  margin-bottom: 20px;
+  opacity: .6;
+}
+
+
+/* Home Page */
+.main-nav{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: #311b92;
+  height: 63px;
+}
+.main-nav a{
+  width: 25%;
+  height: 100%;
+  padding: 10px 0;  
+  float: right;
+  color: white;
+  opacity: .7;
+  text-align: center;
+}
+.main-nav a.active{
+  opacity: 1;
+}
+.main-nav a img{
+  display: block;
+  height: 26px;
+  margin: 0 auto 7px auto;
+}
+.main-nav a div{
+  font-size: 80%;
+}
+
+.view-animate-container {
+  position: relative;
+  overflow: hidden;
+  height: calc(100% - 63px);
+}
+.view-animate-container > .slide{
+  width: 100%;
+  height: 100%;
+}
+.view-animate-container > .slide.ng-enter {
+  opacity: 0;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  transition: all ease 0.5s;    
+}
+.view-animate-container > .slide.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.view-animate-container > .slide.ng-leave {
+  opacity: 1;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  transition: all ease 0.5s;    
+}
+.view-animate-container > .slide.ng-leave.ng-leave-active{
+  opacity: 0;
+}
+
+/* Top User Info */
+.top-user-info{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #5e35b1;
+  padding: 20px 20px 15px 0;
+  color: white;  
+  z-index: 9999999;  
+}
+.top-user-info .user-profile{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.top-user-info .user-profile img{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid white;  
+}
+.top-user-info .user-profile .points-count{
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 90%;
+  border-radius: 50%;
+  min-width: 0;
+  padding: 0;
+}
+.top-user-info .user-location{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px; 
+  width: calc(100% - 200px);   
+}
+.top-user-info .user-location .address{
+  margin-bottom: 4px;
+  line-height: 1.1;  
+  letter-spacing: -0.5px;
+}
+.top-user-info .user-location .change-location-btn{
+  background-color: transparent;  
+  padding: 3px 6px 2px 6px;
+  border: 1px solid white;
+  font-size: 70%;
+}
+.top-user-info .ask-help-btn{
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  background-color: #108aca;
+  text-align: center;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 100%;
+  letter-spacing: -0.5px;  
+  -webkit-transform: translateY(-50%);  
+  -moz-transform: translateY(-50%);  
+  transform: translateY(-50%);  
+}
+.top-user-info .ask-help-btn i{
+  display: inline-block;
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  margin-left: 2px;
+  font-size: 70%;
+  line-height: 1.5;
+  background-color: white;
+  color: rgb(100, 100, 100);
+  text-align: center;
+  border-radius: 50%;
+}
+.top-user-info .ask-help-btn span{
+  display: inline-block;
+  vertical-align: middle;
+}

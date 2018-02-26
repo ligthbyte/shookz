@@ -1,0 +1,76 @@
+<div class="register-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <i class="fa fa-chevron-right" ng-click="goBackToLogin()"></i>
+    <h1>הרשמה</h1>
+  </div>
+
+  <!-- Top Titles -->
+  <div class="top-title">
+    <h2>מלא את הפרטים על מנת להרשם</h2>
+    <h3>השדות המסומנים בכוכבית הם שדות חובה</h3>
+  </div>
+
+  <!-- Registration Form -->
+  <form>
+    <div class="image-selector">
+      <h3>העלה תמונה או בחר מהאופציות הקיימות</h3>
+      <h3>טיפ: תמונת פרופיל אישית מעלה את האמינות</h3>
+      <div class="avatars">
+        <label class="avatar" for="imgSelector"
+              ng-class="isAvatarSelected(0)" ng-style="{'background-image':'url(' + imageUrl + ')'}">
+          <div class="inner">
+            <i ng-hide="registerUser.image" class="fa fa-plus"></i>
+            <span ng-hide="registerUser.image">הוספה</span>
+          </div>
+        </label><!--
+        --><div class="avatar" ng-repeat="i in [1, 2, 3, 4, 5, 6]"
+              ng-class="isAvatarSelected(i)" ng-click="setSelectedAvatar(i)"
+              ng-style="{ 'background-image':'url(img/avatars/' + i + '.png)' }"></div>
+      </div>
+      <input file-input="registerUser.image" id="imgSelector" type="file" accept="image/x-png,image/jpeg,image/gif" ng-hide="1">
+      <input ng-model="registerUser.avatar" type="hidden">
+
+      <div class="field-box gender">
+        <label class="field-title">מין</label>
+        <label class="gender-btn" ng-class="{ 'selected': chosenGender == 'm' }" ng-click="chosenGender = 'm'">
+          <input type="radio" ng-model="registerUser.gender" value="m">
+          זכר
+        </label>
+        <label class="gender-btn" ng-class="{ 'selected': chosenGender == 'f' }" ng-click="chosenGender = 'f'">
+          <input type="radio" ng-model="registerUser.gender" value="f">
+          נקבה
+        </label>
+      </div>
+
+      <div class="field-box" ng-class="{ 'error': errorFields.indexOf('name') > -1 }">
+        <label class="field-title">* שם מלא</label>
+        <input class="field" type="text" ng-model="registerUser.name" hebrew-input>
+      </div>
+
+      <div class="field-box" ng-class="{ 'error': errorFields.indexOf('email') > -1 }">
+        <label class="field-title">* כתובת אימייל</label>
+        <input class="field" type="email" ng-model="registerUser.email">
+      </div>
+
+      <div class="field-box" ng-class="{ 'error': errorFields.indexOf('phone') > -1 }">
+        <label class="field-title">* טלפון נייד</label>
+        <input class="field" type="tel" ng-model="registerUser.phone" maxlength="10" numbers-input>
+      </div>
+
+      <div class="field-box birth-date" ng-class="{ 'error': errorFields.indexOf('date') > -1 }">
+        <label class="field-title">* תאריך לידה</label>
+        <input type="text" ng-model="registerUser.birth_date" datepicker="date" placeholder="לחץ לבחירת תאריך" ng-readonly="getPlatform() != 'browser'">
+      </div>
+
+      <p class="bottom-decleration">השימוש מותר מגיל 18 ומעלה</p>
+
+      <p class="error-msg" ng-if="errorMsg">{{ errorMsg }}</p>
+
+      <button class="register-btn btn-blue" ng-click="submitForm()" type="button">המשך</button>
+
+    </div>
+  </form>
+
+</div>
