@@ -539,14 +539,16 @@ body{
 }
 .help-request-box{
   position: relative;
-  width: 96%;
-  height: 140px;
-  margin: 0 auto;
+  width: 90%;
+  margin: 10px auto;
   border: 1px solid #e3e3e3;
-  -webkit-box-shadow: -2px 0px 4px #e3e3e3;
-  -moz-box-shadow: -2px 0px 4px #e3e3e3;
-  box-shadow: -2px 0px 4px #e3e3e3;
-  background-color: red;
+  -webkit-box-shadow: 0px 0px 14px #e3e3e3;
+     -moz-box-shadow: 0px 0px 14px #e3e3e3;
+          box-shadow: 0px 0px 14px #e3e3e3;
+  background-image: url("../img/help-request-box/help-request-box-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   border-radius: 10px;
   padding: 10px;
   -webkit-box-sizing: border-box;
@@ -562,32 +564,53 @@ body{
   height: 100%;
   z-index: 1;
   content: "";
-  -webkit-background: linear-gradient(rgba(255,255,255,.8) 60%, rgba(0,0,0,0));
-          background: linear-gradient(rgba(255,255,255,.8) 60%, rgba(0,0,0,0));
+  background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
 }
-/* .help-request-box .bg-gradient{
-} */
 .help-request-box .inner-help-request-box{
   z-index: 10;
   position: relative;
 }
-.help-request-box .user-image{
+.help-request-box .inner-help-request-box .user-image{
+  display: inline-block;
+  border: 2px solid white;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  max-height: 50%;
   vertical-align: middle;
 }
-.help-request-box .header{
+.help-request-box .inner-help-request-box .header{
   display: inline-block;
   vertical-align: middle;
   width: calc(100% - 75px);
   margin-right: 10px;
-  font-size: 150%;
+  letter-spacing: 0.5px;
+  font-size: 120%;
   font-weight: bold;
 }
-.help-request-box .content{
+.help-request-box .inner-help-request-box .content{
   display: block;
   margin: 10px auto;
   width: calc(100% - 17px);
+}
+.help-request-box .inner-help-request-box .help-request-info-box{
+  padding: 5px;  
+  max-width: 450px;
+}
+.help-request-box .inner-help-request-box .help-request-info{
+  display: inline-block;
+  text-align: center;
+  font-size: 80%;
+  vertical-align: middle;
+}
+.help-request-box .inner-help-request-box .help-request-info-box .request-icon{
+  vertical-align: middle;
+  height: 25px;
+  width: 25px;
+}
+.help-request-box .inner-help-request-box .help-request-info-box .request-time,
+.help-request-box .inner-help-request-box .help-request-info-box .request-payment{
+  width: calc(30% - 25px);
+}
+.help-request-box .inner-help-request-box .help-request-info-box .request-place{
+  width: calc(40% - 25px);
 }
