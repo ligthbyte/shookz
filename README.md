@@ -1,2 +1,0 @@
-# shookz
-Shookz Mobile App
