@@ -20,7 +20,7 @@
       <!-- Swiper -->
       <link rel="stylesheet" href="lib/swiper-4.1.6/dist/css/swiper.min.css">
    </head>
-   <body ng-controller="AppCtrl" ontouchstart>
+   <body ng-controller="AppCtrl" ng-cloak ontouchstart>
 
       <ng-view></ng-view>
       <div id="loader-container" ng-class="{ 'hidden': !loaderState && loaderTimeout }">

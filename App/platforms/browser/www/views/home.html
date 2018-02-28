@@ -1,5 +1,12 @@
 <div class="home-page">
 
+  <div id="mainPopup" ng-class="{'shown': mainPopupState }">
+    <div class="inner">
+      <p class="popup-caption">{{ mainPopupCaption }}</p>
+      <button class="popup-confirm-btn" ng-click="toggleMainPopup()">{{ mainPopupConfirmBtnText }}</button>
+    </div>
+  </div>
+
   <div class="view-animate-container">
     <header class="top-user-info">
       <span class="user-profile">
@@ -7,13 +14,13 @@
             <button class="btn-blue points-count" ng-click="currentView = 'coins'" type="button">75</button>
         </span>
       <span class="user-location">
-            <div class="address">ריינס 36, תל אביב-יפו</div>
-            <button class="change-location-btn" type="button">הכנס מיקום שונה</button>
+            <div class="address">{{ location }}</div>
+            <button class="change-location-btn" type="button">הזן מיקום ידני</button>
         </span>
       <button class="ask-help-btn" ng-click="currentView = 'help'" type="button">
-            <i class="fa fa-plus"></i>
-            <span>בקש עזרה</span>
-        </button>
+          <img src="./img/top-ask-help-btn-icon.png">
+          <span>בקש עזרה</span>
+      </button>
     </header>
     <div class="slide" ng-class="currentView" ng-include="'./views/page-' + currentView + '.html'"></div>
   </div>
