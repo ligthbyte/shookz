@@ -599,7 +599,6 @@ body{
 }
 .help-request-box .inner-help-request-box .help-request-info{
   display: inline-block;
-  text-align: center;
   font-size: 80%;
   vertical-align: middle;
 }
@@ -607,11 +606,12 @@ body{
   vertical-align: middle;
   height: 25px;
   width: 25px;
+  margin-left: 5px;
 }
 .help-request-box .inner-help-request-box .help-request-info-box .request-time,
 .help-request-box .inner-help-request-box .help-request-info-box .request-payment{
-  width: calc(30% - 25px);
+  width: calc(30% - 30px);
 }
 .help-request-box .inner-help-request-box .help-request-info-box .request-place{
-  width: calc(40% - 25px);
+  width: calc(40% - 30px);
 }
