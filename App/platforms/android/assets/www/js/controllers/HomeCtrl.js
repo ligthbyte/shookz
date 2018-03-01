@@ -1,73 +1,78 @@
 app.controller('HomeCtrl', function($scope){
     $scope.currentView = 'main';
-    $scope.mainPopupState = false;
-    $scope.mainPopupCaption = '';
-    $scope.mainPopupConfirmBtnText = 'אישור';
-    $scope.mainPopupOnClose = null;
     $scope.location = 'טוען את מיקומך...';
     
-    $scope.toggleMainPopup = function (caption = '', onClosePopupFunc = null, confirmBtnText = 'אישור'){
-        if($scope.mainPopupState){
-            $scope.mainPopupState = false;
-            if ($scope.mainPopupOnClose){
-                $scope.mainPopupOnClose();
-            }
-        }
-        else{
-            $scope.mainPopupCaption = caption; 
-            $scope.mainPopupConfirmBtnText = confirmBtnText;
-            $scope.mainPopupOnClose = onClosePopupFunc;
-            $scope.mainPopupState = true;
-        }
-    }
+    function onGetLocationSuccess(position) {
+        console.log('succeed getting coordinates!', position);
+        nativegeocoder.reverseGeocode(
+            function (result) {
+                console.log('succeed converting coordinates to address!');
+                var city = result[0].locality;
+                var streetName = result[0].thoroughfare;
+                var streetNumber = result[0].subThoroughfare;
+                $scope.location = streetName + ' ' + streetNumber + ', ' + city;
+                $scope.$apply();
+            },
+            function (error) {
+                console.log('failed converting coordinates to address, error: ', error);
+                $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך. צא מהאפליקציה וסגור אותה ברקע, ולאחר מכן פתח אותה מחדש.', function () { navigator.app.exitApp(); }, 'צא מהאפליקציה');
 
-    function getUserLocation() {
-        console.log('loading location...');
-        navigator.geolocation.watchPosition(
-            function(position) {
-                console.log('succeed getting coordinates!');
-                nativegeocoder.reverseGeocode(
-                    function (result) {
-                        console.log('succeed converting coordinates to address!');
-                        var city = result[0].locality;
-                        var streetName = result[0].thoroughfare;
-                        var streetNumber = result[0].subThoroughfare;
-                        $scope.location = streetName + ' ' + streetNumber + ', ' + city;
-                        $scope.$apply();
-                    },
-                    function (error) {
-                        console.log('failed converting coordinates to address, error: ', error);
-                        $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית במועד מאוחר יותר.', getUserLocation);                        
-
-                        $scope.location = 'מיקומך אינו זמין, נא הזן ידנית.';
-                        $scope.mainPopupState = true;                        
-                        $scope.$apply();
-                    },
-                    position.coords.latitude,
-                    position.coords.longitude,
-                    { useLocale: true, maxResults: 1 }
-                );
-            }, function(error) {
-                console.log('failed getting coordinates, error: ', error);
-                var errorMsg = '';
-                switch(error){
-                    case 1:
-                        $scope.toggleMainPopup('בחלון הבא תתבקש לאשר שירותי מיקום. נא אשר על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', getUserLocation);                
-                    
-                    case 2:
-                        $scope.toggleMainPopup('אנא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', function () { window.cordova.plugins.settings.open("location"); });
-                    
-                    case 3:
-                        $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית.', getUserLocation);
-                }
-                
-                $scope.location = 'מיקומך אינו זמין, הזן ידנית.';
                 $scope.mainPopupState = true;
                 $scope.$apply();
             },
-            { enableHighAccuracy: true }
-        );    
+            position.coords.latitude,
+            position.coords.longitude,
+            { useLocale: true, maxResults: 1 }
+        );      
     }
-    //TODO: save a localstorage that the user confirmed to location services and don't show dialog if confirmed
-    $scope.toggleMainPopup('בחלון הבא תתבקש לאשר לנו גישה למיקומך. נא אשר זאת על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', getUserLocation);
+    function onGetLocationFail(error) {
+        console.log('failed getting coordinates, error: ', error);
+        $scope.location = 'מיקומך אינו זמין, נא הזן ידנית.';            
+    }
+    function getUserPosition() {
+        navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 20000 });
+    }    
+    function watchUserLocation() {
+        navigator.geolocation.watchPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 20000 });
+    }
+    function requestLocationAuthorization() {
+        cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
+            switch (status) {
+                case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                    watchUserLocation();
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+                    console.log('Permission permanently denied.');
+                    $scope.toggleMainPopup('האפליקציה אינה יכולה לפעול ללא שירותי מיקום, נא הפעל אותם מההגדרות.', function() {                        
+                        cordova.plugins.diagnostic.switchToSettings();
+                    }, 'קחו אותי להגדרות');
+                    break;
+                default:
+                    requestLocationAuthorization();
+                    break;
+            }
+        }, function (error) {
+            console.error(error);
+        });
+    }   
+    cordova.plugins.diagnostic.isLocationEnabled(function(available){
+        if(available){
+            cordova.plugins.diagnostic.isLocationAuthorized(function(authorized){
+                if(authorized){
+                    console.log('location authorized');
+                    watchUserLocation();
+                }
+                else{
+                    requestLocationAuthorization();
+                }
+            }, function (error) {
+                $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+            });            
+        }
+        else{
+            $scope.toggleMainPopup('אנא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקומך הנוכחי.', function () { window.cordova.plugins.settings.open("location"); });
+        }
+    }, function (error) {
+        $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+    });
 });

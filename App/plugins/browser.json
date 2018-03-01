@@ -15,6 +15,9 @@
     },
     "cordova.plugins.diagnostic": {
       "PACKAGE_NAME": "com.shookz.app"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.shookz.app"
     }
   },
   "dependent_plugins": {}

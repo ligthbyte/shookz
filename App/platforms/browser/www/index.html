@@ -26,6 +26,12 @@
       <div id="loader-container" ng-class="{ 'hidden': !loaderState && loaderTimeout }">
         <div id="loader"></div>
       </div>
+      <div id="mainPopup" ng-class="{'shown': mainPopupState }">
+        <div class="inner">
+          <p class="popup-caption">{{ mainPopupCaption }}</p>
+          <button class="popup-confirm-btn" ng-click="toggleMainPopup()">{{ mainPopupConfirmBtnText }}</button>
+        </div>
+      </div>
 
       <!--Angular -->
       <script src="js/angular.min.js"></script>

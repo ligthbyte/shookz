@@ -25,7 +25,7 @@ app.controller('HomeCtrl', function($scope){
         console.log('loading location...');
         navigator.geolocation.watchPosition(
             function(position) {
-                console.log('succeed getting coordinates!');
+                console.log('succeed getting coordinates!', position);
                 nativegeocoder.reverseGeocode(
                     function (result) {
                         console.log('succeed converting coordinates to address!');
@@ -39,7 +39,6 @@ app.controller('HomeCtrl', function($scope){
                         console.log('failed converting coordinates to address, error: ', error);
                         $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית במועד מאוחר יותר.', getUserLocation);                        
 
-                        $scope.location = 'מיקומך אינו זמין, נא הזן ידנית.';
                         $scope.mainPopupState = true;                        
                         $scope.$apply();
                     },
@@ -49,25 +48,63 @@ app.controller('HomeCtrl', function($scope){
                 );
             }, function(error) {
                 console.log('failed getting coordinates, error: ', error);
-                var errorMsg = '';
-                switch(error){
-                    case 1:
-                        $scope.toggleMainPopup('בחלון הבא תתבקש לאשר שירותי מיקום. נא אשר על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', getUserLocation);                
+                $scope.location = 'מיקומך אינו זמין, נא הזן ידנית.';                
+                // var errorMsg = '';
+                // switch(error){
+                //     case 1:
+                //         $scope.toggleMainPopup('בחלון הבא תתבקש לאשר שירותי מיקום. נא אשר על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', getUserLocation);                
                     
-                    case 2:
-                        $scope.toggleMainPopup('אנא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', function () { window.cordova.plugins.settings.open("location"); });
+                //     case 2:
+                //         $scope.toggleMainPopup('אנא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', function () { window.cordova.plugins.settings.open("location"); });
                     
-                    case 3:
-                        $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית.', getUserLocation);
-                }
+                //     case 3:
+                //         $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית.', getUserLocation);
+                // }
                 
-                $scope.location = 'מיקומך אינו זמין, הזן ידנית.';
-                $scope.mainPopupState = true;
-                $scope.$apply();
-            },
-            { enableHighAccuracy: true }
+                // $scope.location = 'מיקומך אינו זמין, הזן ידנית.';
+                // $scope.mainPopupState = true;
+                // $scope.$apply();
+            }
+            // { enableHighAccuracy: true }
         );    
     }
     //TODO: save a localstorage that the user confirmed to location services and don't show dialog if confirmed
-    $scope.toggleMainPopup('בחלון הבא תתבקש לאשר לנו גישה למיקומך. נא אשר זאת על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', getUserLocation);
+    // $scope.toggleMainPopup('בחלון הבא תתבקש לאשר לנו גישה למיקומך. נא אשר זאת על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', getUserLocation);
+    getUserLocation();
+    cordova.plugins.diagnostic.isLocationEnabled(function(available){
+        if(available){
+            cordova.plugins.diagnostic.isLocationAuthorized(function(authorized){
+                if(authorized){
+                    console.log('location authorized');
+                }
+                else{
+                    cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
+                        switch (status) {
+                            case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                                console.log("Permission not requested");
+                                break;
+                            case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                                console.log("Permission granted");
+                                break;
+                            case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                                console.log("Permission denied");
+                                break;
+                            case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+                                console.log("Permission permanently denied");
+                                break;
+                        }
+                    }, function (error) {
+                        console.error(error);
+                    });                    
+                }
+            }, function (error) {
+                $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+            });            
+        }
+        else{
+            $scope.toggleMainPopup('אנא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', function () { window.cordova.plugins.settings.open("location"); });
+        }
+    }, function (error) {
+        $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+    });
 });

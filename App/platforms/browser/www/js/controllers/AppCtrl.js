@@ -1,4 +1,10 @@
 app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
+  //check internet connection
+  var networkState = navigator.connection.type;
+  if (networkState !== Connection.NONE) {
+    
+  }
+
   $scope.changeView = function(viewName){
     $location.path(viewName);
   }
