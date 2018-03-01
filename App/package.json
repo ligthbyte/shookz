@@ -13,7 +13,7 @@
         "browser-sync": "^2.23.6",
         "cheerio": "^0.19.0",
         "cordova-android": "^6.2.3",
-        "cordova-browser": "^5.0.3",
+        "cordova-browser": "^4.1.0",
         "cordova-open-native-settings": "^1.5.0",
         "cordova-plugin-browsersync": "^1.1.0",
         "cordova-plugin-compat": "^1.0.0",
@@ -40,6 +40,7 @@
             "cordova-open-native-settings": {}
         },
         "platforms": [
+            "android",
             "browser"
         ]
     }

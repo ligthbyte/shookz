@@ -1,0 +1,56 @@
+<div class="home-page">
+
+  <div id="mainPopup" ng-class="{'shown': mainPopupState }">
+    <div class="inner">
+      <p class="popup-caption">{{ mainPopupCaption }}</p>
+      <button class="popup-confirm-btn" ng-click="toggleMainPopup()">{{ mainPopupConfirmBtnText }}</button>
+    </div>
+  </div>
+
+  <div class="view-animate-container">
+    <header class="top-user-info">
+      <span class="user-profile">
+            <img src="./img/avatars/3.png" alt="פרופיל">
+            <button class="btn-blue points-count" ng-click="currentView = 'coins'" type="button">75</button>
+        </span>
+      <span class="user-location">
+            <div class="address">{{ location }}</div>
+            <button class="change-location-btn" type="button">הזן מיקום ידני</button>
+        </span>
+      <button class="ask-help-btn" ng-click="currentView = 'help'" type="button">
+          <img src="./img/top-ask-help-btn-icon.png">
+          <span>בקש עזרה</span>
+      </button>
+    </header>
+    <div class="slide" ng-class="currentView" ng-include="'./views/page-' + currentView + '.html'"></div>
+  </div>
+  
+  <nav class="main-nav">
+    <ul>
+      <li>
+        <a ng-class="{ 'active':  currentView == 'coins' }" ng-click="currentView = 'coins'">
+          <img src="./img/bottom-nav-coins-icon.png" alt="לוח ראשי">
+          <div>מטבעות</div>
+        </a>
+      </li>
+      <li>
+        <a ng-class="{ 'active':  currentView == 'main' }" ng-click="currentView = 'main'">
+          <img src="./img/bottom-nav-main-icon.png" alt="לוח ראשי">
+          <div>לוח ראשי</div>
+        </a>
+      </li>
+      <li>
+        <a ng-class="{ 'active':  currentView == 'help' }" ng-click="currentView = 'help'">
+          <img src="./img/bottom-nav-help-icon.png" alt="בקש עזרה">
+          <div>בקש עזרה</div>
+        </a>
+      </li>
+      <li>
+        <a ng-class="{ 'active':  currentView == 'private' }" ng-click="currentView = 'private'">
+          <img src="./img/bottom-nav-private-icon.png" alt="איזור אישי">
+          <div>איזור אישי</div>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
