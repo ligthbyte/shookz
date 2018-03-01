@@ -5,9 +5,14 @@ app.controller('HomeCtrl', function($scope){
     $scope.mainPopupConfirmBtnText = 'אישור';
     $scope.location = 'טוען את מיקומך...';
 
-    $scope.toggleMainPopup = function (caption = null, onClose = null, confirmBtnText = null){
+    $scope.toggleMainPopup = function() {
+        toggleMainPopup();
+    }
+    
+    function toggleMainPopup(caption = null, onClose = null, confirmBtnText = null){
         if($scope.mainPopupState){
             $scope.mainPopupState = false;
+            console.log('onClose', onClose);
             if(onClose) onClose();
         }
         else{
@@ -17,7 +22,8 @@ app.controller('HomeCtrl', function($scope){
         }
     }
 
-    $scope.getUserLocation = function() {
+    function getUserLocation() {
+        var func = getUserLocation;
         console.log('loading location...');
         navigator.geolocation.getCurrentPosition(
             function(position) {
@@ -33,7 +39,7 @@ app.controller('HomeCtrl', function($scope){
                     },
                     function (error) {
                         console.log('failed converting coordinates to address, error: ', error);
-                        $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית במועד מאוחר יותר.', $scope.getUserLocation);                        
+                        toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית במועד מאוחר יותר.', getUserLocation);                        
 
                         $scope.location = 'מיקומך אינו זמין, נא הזן ידנית.';
                         $scope.mainPopupState = true;                        
@@ -47,9 +53,9 @@ app.controller('HomeCtrl', function($scope){
                 console.log('failed getting coordinates, error: ', error);
                 var errorMsg = '';
                 switch(error.code){
-                    case 1: $scope.toggleMainPopup('בחלון הבא תתבקש לאשר שירותי מיקום. נא אשר על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', $scope.getUserLocation);                
+                    case 1: toggleMainPopup('בחלון הבא תתבקש לאשר שירותי מיקום. נא אשר על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', getUserLocation);                
                     case 2:
-                    case 3: $scope.toggleMainPopup('אנא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', function () { window.cordova.plugins.settings.open("location"); });
+                    case 3: toggleMainPopup('אנא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.', function () { window.cordova.plugins.settings.open("location"); });
                     // case 3: $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא נסה שנית.', $scope.getUserLocation());
                 }
                 
@@ -61,5 +67,6 @@ app.controller('HomeCtrl', function($scope){
         );    
     }
     //TODO: save a localstorage that the user confirmed to location services and don't show dialog if confirmed
-    $scope.toggleMainPopup('בחלון הבא תתבקש לאשר לנו גישה למיקומך. נא אשר זאת על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.');
+    console.log('getUserLocation', getUserLocation);
+    toggleMainPopup('בחלון הבא תתבקש לאשר לנו גישה למיקומך. נא אשר זאת על מנת שנוכל להתאים את המודעות למיקום הנוכחי שלך.',  getUserLocation);
 });
