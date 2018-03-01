@@ -45,6 +45,14 @@ module.exports = [
         "clobbers": [
             "nativegeocoder"
         ]
+    },
+    {
+        "id": "cordova.plugins.diagnostic.Diagnostic",
+        "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.js",
+        "pluginId": "cordova.plugins.diagnostic",
+        "clobbers": [
+            "cordova.plugins.diagnostic"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -57,7 +65,8 @@ module.exports.metadata =
     "cordova-plugin-device": "2.0.1",
     "cordova-plugin-geolocation": "2.4.3",
     "cordova-plugin-nativegeocoder": "3.1.1",
-    "cordova-plugin-whitelist": "1.3.2"
+    "cordova-plugin-whitelist": "1.3.2",
+    "cordova.plugins.diagnostic": "3.9.2"
 };
 // BOTTOM OF METADATA
 });
