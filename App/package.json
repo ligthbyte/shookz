@@ -38,7 +38,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-nativegeocoder": {},
       "cordova-plugin-geolocation": {},
-      "cordova-open-native-settings": {}
+      "cordova-open-native-settings": {},
+      "cordova.plugins.diagnostic": {}
     },
     "platforms": [
       "android"

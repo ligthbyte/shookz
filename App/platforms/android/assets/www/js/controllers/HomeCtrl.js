@@ -7,7 +7,6 @@ app.controller('HomeCtrl', function($scope){
     $scope.location = 'טוען את מיקומך...';
     
     $scope.toggleMainPopup = function (caption = '', onClosePopupFunc = null, confirmBtnText = 'אישור'){
-        console.log('$scope.mainPopupOnClose', $scope.mainPopupOnClose);
         if($scope.mainPopupState){
             $scope.mainPopupState = false;
             if ($scope.mainPopupOnClose){
