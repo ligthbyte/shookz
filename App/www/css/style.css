@@ -102,8 +102,8 @@ body{
   }
 }
 
-/* Main Popup */
-#mainPopup{
+/* Popup */
+.popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -116,11 +116,11 @@ body{
   -webkit-transition: .5s all;
   transition: .5s all;
 }
-#mainPopup.shown{
+.popup.shown{
   visibility: visible;
   opacity: 1;
 }
-#mainPopup .inner{
+.popup .inner{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -136,17 +136,17 @@ body{
   -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 }
-#mainPopup.shown .inner{
+.popup.shown .inner{
   opacity: 1;
   margin-top: 0;
 }
-#mainPopup .popup-caption{
+.popup .popup-caption{
   padding: 15px;
   line-height: 1.2;
   font-size: 110%;
   text-align: center;
 }
-#mainPopup .popup-confirm-btn{
+.popup .popup-confirm-btn{
   display: block;
   width: 100%;
   padding: 10px 0;

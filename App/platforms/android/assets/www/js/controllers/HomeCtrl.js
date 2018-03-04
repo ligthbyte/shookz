@@ -12,7 +12,10 @@ app.controller('HomeCtrl', function($scope){
                 var streetNumber = result[0].subThoroughfare;
                 $scope.location = streetName + ' ' + streetNumber + ', ' + city;
                 $scope.$apply();
-                if($scope.watchId) navigator.geolocation.clearWatch($scope.watchId);
+                if($scope.watchId){
+                    navigator.geolocation.clearWatch($scope.watchId);
+                    $scope.watchId = null;
+                }
             },
             function (error) {
                 console.log('failed converting coordinates to address, error: ', error);
@@ -80,6 +83,7 @@ app.controller('HomeCtrl', function($scope){
                     }
                 }, function (error) {
                     $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+                    $scope.$apply();
                 });            
             }
             else{
@@ -87,23 +91,29 @@ app.controller('HomeCtrl', function($scope){
                 $scope.toggleMainPopup('נא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקומך הנוכחי.', function () {
                     window.cordova.plugins.settings.open("location", function() {
                         initLocation();
-                        $scope.$apply();
                     });
                 }, 'הפעל שירותי מיקום');
+                $scope.$apply();
             }
         }, function (error) {
             $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
         });
     }
     cordova.plugins.diagnostic.registerLocationStateChangeHandler(function(state){
-        initLocation();
-        
         if(($scope.getPlatform() === "Android" && state !== cordova.plugins.diagnostic.locationMode.LOCATION_OFF)
             || ($scope.getPlatform() === "iOS") && ( state === cordova.plugins.diagnostic.permissionStatus.GRANTED
                 || state === cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
-        )){
+        )){ //location is availbale
             cordova.plugins.diagnostic.registerLocationStateChangeHandler(false); //stop watching
+            watchUserLocation();
+        }
+        else{
+            initLocation();
         }
     });
-    initLocation();
+    $scope.$watch('connectedToInternet', function(){
+        if($scope.connectedToInternet){
+            initLocation();
+        }
+    });
 });

@@ -5,7 +5,7 @@ app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
   $scope.mainPopupConfirmBtnText = 'אישור';
   $scope.mainPopupOnClose = null;
   $scope.toggleMainPopup = function (caption = '', onClosePopupFunc = null, confirmBtnText = 'אישור') {
-    console.log('asked popup to open');
+    console.log('asked popup to open with caption: "' + caption + '"');
     if ($scope.mainPopupState) {
       $scope.mainPopupState = false;
       if ($scope.mainPopupOnClose) {
@@ -21,19 +21,15 @@ app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
   }
 
   //check internet connection
+  $scope.connectedToInternet = false;
   document.addEventListener("offline", function(){
     $scope.toggleMainPopup('כדי שהאפליקציה תעבוד היא נדרשת לחיבור לאינטרנט. נא הפעל את האינטרנט במכשירך.', null, null);
+    $scope.connectedToInternet = false;
   }, false);
   document.addEventListener("online", function () {
     $scope.mainPopupState = false;
+    $scope.connectedToInternet = true;
   }, false);  
-  if (navigator.connection.type === Connection.NONE) { //no internet connection
-    $scope.toggleMainPopup('כדי שהאפליקציה תעבוד היא נדרשת לחיבור לאינטרנט. נא הפעל את האינטרנט במכשירך.', null, null);
-  }
-  else{
-    console.log('There is an internet connection!');
-  }
-
 
   $scope.changeView = function(viewName){
     $location.path(viewName);
