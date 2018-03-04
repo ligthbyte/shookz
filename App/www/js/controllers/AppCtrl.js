@@ -40,7 +40,6 @@ app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
   }
 
   $scope.getPlatform = function(){
-    console.log(device.platform);
     return device.platform;
   }
 

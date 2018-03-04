@@ -29,25 +29,26 @@ app.controller('HomeCtrl', function($scope){
     function onGetLocationFail(error) {
         console.log('failed getting coordinates, error: ', error);
 
+         //TODO: handle timeout
         if(error.code === 1){
             requestLocationAuthorization();
         }
         else{
-            $scope.location = 'מיקומך אינו זמין, נא הזן ידנית.';     
+            initLocation();
         }       
     }
     function getUserPosition() {
-        navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 20000 });
+        navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 8000 });
     }    
     function watchUserLocation() {
-        $scope.watchId = navigator.geolocation.watchPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 20000 });
+        $scope.watchId = navigator.geolocation.watchPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 8000 });
     }
     function requestLocationAuthorization() {
         cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
             console.log('auth status: ', status);
             switch (status) {
                 case 'GRANTED':
-                    watchUserLocation();
+                    if(!$scope.watchId) watchUserLocation();
                     break;
                 case 'DENIED_ALWAYS':
                     //TODO: FIX IT
@@ -66,28 +67,43 @@ app.controller('HomeCtrl', function($scope){
             console.error(error);
         });
     }   
-    cordova.plugins.diagnostic.isLocationEnabled(function(available){
-        if(available){
-            cordova.plugins.diagnostic.isLocationAuthorized(function(authorized){
-                if(authorized){
-                    console.log('location authorized');
-                    watchUserLocation();
-                }
-                else{
-                    requestLocationAuthorization();
-                }
-            }, function (error) {
-                $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
-            });            
+    function initLocation() {
+        cordova.plugins.diagnostic.isLocationEnabled(function(available){
+            if(available){
+                cordova.plugins.diagnostic.isLocationAuthorized(function(authorized){
+                    if(authorized){
+                        console.log('location authorized');
+                        watchUserLocation();
+                    }
+                    else{
+                        requestLocationAuthorization();
+                    }
+                }, function (error) {
+                    $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+                });            
+            }
+            else{
+                //TODO: Handle when user go back to app and dont turn on location (maybe create/search some kind of watcher for location services)
+                $scope.toggleMainPopup('נא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקומך הנוכחי.', function () {
+                    window.cordova.plugins.settings.open("location", function() {
+                        initLocation();
+                        $scope.$apply();
+                    });
+                }, 'הפעל שירותי מיקום');
+            }
+        }, function (error) {
+            $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+        });
+    }
+    cordova.plugins.diagnostic.registerLocationStateChangeHandler(function(state){
+        initLocation();
+        
+        if(($scope.getPlatform() === "Android" && state !== cordova.plugins.diagnostic.locationMode.LOCATION_OFF)
+            || ($scope.getPlatform() === "iOS") && ( state === cordova.plugins.diagnostic.permissionStatus.GRANTED
+                || state === cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
+        )){
+            cordova.plugins.diagnostic.registerLocationStateChangeHandler(false); //stop watching
         }
-        else{
-            $scope.toggleMainPopup('נא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקומך הנוכחי.', function () {
-                window.cordova.plugins.settings.open("location", function(){
-                    watchUserLocation();
-                });
-            }, 'הפעל שירותי מיקום');
-        }
-    }, function (error) {
-        $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
     });
+    initLocation();
 });
