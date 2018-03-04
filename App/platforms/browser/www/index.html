@@ -29,7 +29,7 @@
       <div id="mainPopup" ng-class="{'shown': mainPopupState }">
         <div class="inner">
           <p class="popup-caption">{{ mainPopupCaption }}</p>
-          <button class="popup-confirm-btn" ng-click="toggleMainPopup()">{{ mainPopupConfirmBtnText }}</button>
+          <button class="popup-confirm-btn" ng-click="toggleMainPopup()" ng-if="mainPopupConfirmBtnText">{{ mainPopupConfirmBtnText }}</button>
         </div>
       </div>
 

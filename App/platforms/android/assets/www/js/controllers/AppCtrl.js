@@ -5,6 +5,7 @@ app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
   $scope.mainPopupConfirmBtnText = 'אישור';
   $scope.mainPopupOnClose = null;
   $scope.toggleMainPopup = function (caption = '', onClosePopupFunc = null, confirmBtnText = 'אישור') {
+    console.log('asked popup to open');
     if ($scope.mainPopupState) {
       $scope.mainPopupState = false;
       if ($scope.mainPopupOnClose) {
