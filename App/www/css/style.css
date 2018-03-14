@@ -593,6 +593,7 @@ body{
 
 .swiper-background{
   background-color: #f1ce2e;
+  padding-bottom: 5px;
 }
 .swiper-background .notice-box{
   text-align: right;
@@ -623,9 +624,6 @@ body{
 }
 .swiper-background .swiper-container .swiper-wrapper, .swiper-container .swiper-wrapper .swiper-slide{
   height: auto !important;  
-}
-.swiper-container .swiper-wrapper .swiper-slide.help-request-box{
-  margin: 10px 3px;
 }
 .swiper-container .swiper-wrapper .swiper-slide.help-request-box .recommended-icon{
   position: absolute;

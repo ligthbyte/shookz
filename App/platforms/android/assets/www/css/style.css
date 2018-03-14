@@ -624,9 +624,6 @@ body{
 .swiper-background .swiper-container .swiper-wrapper, .swiper-container .swiper-wrapper .swiper-slide{
   height: auto !important;  
 }
-.swiper-container .swiper-wrapper .swiper-slide.help-request-box{
-  margin: 10px 3px;
-}
 .swiper-container .swiper-wrapper .swiper-slide.help-request-box .recommended-icon{
   position: absolute;
   top: -15px;
@@ -704,13 +701,12 @@ body{
   display: inline-block;
   font-size: 70%;
   vertical-align: middle;
-
+  padding: 0 5px;
 }
 .help-request-box .inner-help-request-box .help-request-info-box .request-icon{
   display: inline-block;
   height: 18px;
   width: 18px;
-  padding: 0 5px;
   vertical-align: middle;
 }
 .help-request-box .inner-help-request-box .help-request-info-box .request-time, 
