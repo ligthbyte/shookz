@@ -483,7 +483,9 @@ body{
 }
 .view-animate-container > .slide{
   width: 100%;
-  height: 100%;
+  height: calc(100% - 63px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .view-animate-container > .slide.ng-enter {
   opacity: 0;
@@ -588,6 +590,55 @@ body{
 }
 
 /* Main Page */
+
+.swiper-background{
+  background-color: #f1ce2e;
+}
+.swiper-background .notice-box{
+  text-align: right;
+  margin-bottom: 10px;
+  padding: 5px;
+  padding-right: 20px;
+  background-color: rgba(30,30,30,.3);
+  font-size: 80%;
+  font-weight: bold;
+  letter-spacing: .3px;
+}
+.swiper-background .notice-box .seperator{
+  display: inline-block;
+  vertical-align: middle;
+  height: 10px;
+  width: 2px;
+  background-color: rgb(255, 255, 255);
+  margin: 0 7px;
+}
+.swiper-background .notice-box .notice{
+  display: inline-block;
+  line-height: 1.8;
+  color: rgb(255, 255, 255);
+}
+.swiper-background .swiper-container{
+  width: 90%;
+  overflow: visible;
+}
+.swiper-background .swiper-container .swiper-wrapper, .swiper-container .swiper-wrapper .swiper-slide{
+  height: auto !important;  
+}
+.swiper-container .swiper-wrapper .swiper-slide.help-request-box{
+  margin: 10px 3px;
+}
+.swiper-container .swiper-wrapper .swiper-slide.help-request-box .recommended-icon{
+  position: absolute;
+  top: -15px;
+  left: 8px;
+  width: 50px;
+  z-index: 20;
+}
+.swiper-background .swiper-container .swiper-wrapper .swiper-slide.help-request-box .inner-help-request-box .header{
+  width: calc(100% - 130px);
+}
+
+
 .help-request-box{
   position: relative;
   width: 90%;
@@ -601,11 +652,10 @@ body{
   background-size: cover;
   background-position: center;
   border-radius: 10px;
-  padding: 10px;
+  padding: 7px 10px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  overflow: hidden;
 }
 .help-request-box::after{
   position: absolute;
@@ -625,8 +675,8 @@ body{
 .help-request-box .inner-help-request-box .user-image{
   display: inline-block;
   border: 2px solid white;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   vertical-align: middle;
 }
@@ -636,33 +686,36 @@ body{
   width: calc(100% - 75px);
   margin-right: 10px;
   letter-spacing: 0.5px;
-  font-size: 120%;
-  font-weight: bold;
+  font-size: 100%;
+  font-weight: bold;  
 }
 .help-request-box .inner-help-request-box .content{
   display: block;
-  margin: 10px auto;
-  width: calc(100% - 17px);
+  margin: 5px auto;
+  padding: 0 5px;
+  font-size: 85%;
+  line-height: 1.2;
 }
 .help-request-box .inner-help-request-box .help-request-info-box{
-  padding: 5px;  
+  padding: 5px;
   max-width: 450px;
 }
 .help-request-box .inner-help-request-box .help-request-info{
   display: inline-block;
-  text-align: center;
-  font-size: 80%;
+  font-size: 70%;
   vertical-align: middle;
+  padding: 0 5px;
 }
 .help-request-box .inner-help-request-box .help-request-info-box .request-icon{
+  display: inline-block;
+  height: 18px;
+  width: 18px;
   vertical-align: middle;
-  height: 25px;
-  width: 25px;
 }
-.help-request-box .inner-help-request-box .help-request-info-box .request-time,
-.help-request-box .inner-help-request-box .help-request-info-box .request-payment{
-  width: calc(30% - 25px);
-}
+.help-request-box .inner-help-request-box .help-request-info-box .request-time, 
 .help-request-box .inner-help-request-box .help-request-info-box .request-place{
-  width: calc(40% - 25px);
+  width: calc(40% - 18px);
 }
+.help-request-box .inner-help-request-box .help-request-info-box .request-payment{
+  width: calc(20% - 18px);
+ }
