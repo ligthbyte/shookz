@@ -1,24 +1,24 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-open-native-settings": {
+      "PACKAGE_NAME": "com.shookz.app"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-browsersync": {
+      "PACKAGE_NAME": "com.shookz.app"
     },
-    "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.shookz.app"
-        },
-        "cordova-plugin-browsersync": {
-            "PACKAGE_NAME": "com.shookz.app"
-        },
-        "cordova-plugin-datepicker": {
-            "PACKAGE_NAME": "com.shookz.app"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.shookz.app"
-        }
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.shookz.app"
     },
-    "dependent_plugins": {}
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.shookz.app"
+    }
+  },
+  "dependent_plugins": {}
 }

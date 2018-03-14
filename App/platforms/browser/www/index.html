@@ -20,11 +20,17 @@
       <!-- Swiper -->
       <link rel="stylesheet" href="lib/swiper-4.1.6/dist/css/swiper.min.css">
    </head>
-   <body ng-controller="AppCtrl" ontouchstart>
+   <body ng-controller="AppCtrl" ng-cloak ontouchstart>
 
       <ng-view></ng-view>
       <div id="loader-container" ng-class="{ 'hidden': !loaderState && loaderTimeout }">
         <div id="loader"></div>
+      </div>
+      <div id="mainPopup" ng-class="{'shown': mainPopupState }">
+        <div class="inner">
+          <p class="popup-caption">{{ mainPopupCaption }}</p>
+          <button class="popup-confirm-btn" ng-click="toggleMainPopup()" ng-if="mainPopupConfirmBtnText">{{ mainPopupConfirmBtnText }}</button>
+        </div>
       </div>
 
       <!--Angular -->

@@ -1,10 +1,41 @@
 app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
+  //main popup
+  $scope.mainPopupState = false;
+  $scope.mainPopupCaption = '';
+  $scope.mainPopupConfirmBtnText = 'אישור';
+  $scope.mainPopupOnClose = null;
+  $scope.toggleMainPopup = function (caption = '', onClosePopupFunc = null, confirmBtnText = 'אישור') {
+    console.log('asked popup to open with caption: "' + caption + '"');
+    if ($scope.mainPopupState) {
+      $scope.mainPopupState = false;
+      if ($scope.mainPopupOnClose) {
+        $scope.mainPopupOnClose();
+      }
+    }
+    else {
+      $scope.mainPopupCaption = caption;
+      $scope.mainPopupConfirmBtnText = confirmBtnText;
+      $scope.mainPopupOnClose = onClosePopupFunc;
+      $scope.mainPopupState = true;
+    }
+  }
+
+  //check internet connection
+  $scope.connectedToInternet = false;
+  document.addEventListener("offline", function(){
+    $scope.toggleMainPopup('כדי שהאפליקציה תעבוד היא נדרשת לחיבור לאינטרנט. נא הפעל את האינטרנט במכשירך.', null, null);
+    $scope.connectedToInternet = false;
+  }, false);
+  document.addEventListener("online", function () {
+    $scope.mainPopupState = false;
+    $scope.connectedToInternet = true;
+  }, false);  
+
   $scope.changeView = function(viewName){
     $location.path(viewName);
   }
 
   $scope.getPlatform = function(){
-    console.log(device.platform);
     return device.platform;
   }
 
