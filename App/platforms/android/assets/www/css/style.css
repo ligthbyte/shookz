@@ -593,6 +593,7 @@ body{
 
 .swiper-background{
   background-color: #f1ce2e;
+  padding-bottom: 5px;
 }
 .swiper-background .notice-box{
   text-align: right;
@@ -607,7 +608,7 @@ body{
 .swiper-background .notice-box .seperator{
   display: inline-block;
   vertical-align: middle;
-  height: 10px;
+  height: 11px;
   width: 2px;
   background-color: rgb(255, 255, 255);
   margin: 0 7px;
@@ -618,7 +619,7 @@ body{
   color: rgb(255, 255, 255);
 }
 .swiper-background .swiper-container{
-  width: 90%;
+  padding: 0 5%;
   overflow: visible;
 }
 .swiper-background .swiper-container .swiper-wrapper, .swiper-container .swiper-wrapper .swiper-slide{

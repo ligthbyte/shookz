@@ -1,85 +1,90 @@
 <div ng-controller="PageMainCtrl">
-    
-    <div class="swiper-background"> 
-        <div class="notice-box">
-            <span class="notice">הידעת</span>
-            <span class="seperator"></span>
-            <span class="notice">מודעות דחופות מזכות ביותר נקודות</span>
-        </div> 
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide help-request-box">
-                    <img src="img/help-request-box/recommended.png" alt="מומלץ" class="recommended-icon">
-                    <div class="inner-help-request-box">
-                        <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
-                        <h6 class="header"> אני מחפש דוגווקר להיום </h6>
-                        <p class="content">
-                            הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
-                        </p>
-                        <div class="help-request-info-box">
-                            <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
-                            class="help-request-info request-time">לפני 7 דק'</span><img
-                            src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
-                            class="help-request-info request-place">7.4 ק"מ ממך</span><img
-                            src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
-                            class="help-request-info request-payment">75</span>
+    <div class="no-location" ng-hide="locationAccessible">
+        <img src="img/no-location-icon.png" alt="מיקום לא זמין">
+        <h4>מיקומך אינו זמין</h4>
+    </div>
+    <div class="posts-container" ng-show="locationAccessible">
+        <div class="swiper-background"> 
+            <div class="notice-box">
+                <span class="notice">הידעת</span>
+                <span class="seperator"></span>
+                <span class="notice">מודעות דחופות מזכות ביותר נקודות</span>
+            </div> 
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide help-request-box">
+                        <img src="img/help-request-box/recommended.png" alt="מומלץ" class="recommended-icon">
+                        <div class="inner-help-request-box">
+                            <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
+                            <h6 class="header"> אני מחפש דוגווקר להיום </h6>
+                            <p class="content">
+                                הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
+                            </p>
+                            <div class="help-request-info-box">
+                                <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
+                                class="help-request-info request-time">לפני 7 דק'</span><img
+                                src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
+                                class="help-request-info request-place">7.4 ק"מ ממך</span><img
+                                src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
+                                class="help-request-info request-payment">75</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="swiper-slide help-request-box">
-                    <div class="inner-help-request-box">
-                        <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
-                        <h6 class="header"> אני מחפש דוגווקר להיום </h6>
-                        <p class="content">
-                            הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
-                        </p>
-                        <div class="help-request-info-box">
-                            <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
-                             class="help-request-info request-time">לפני 7 דק'</span><img
-                             src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
-                             class="help-request-info request-place">7.4 ק"מ ממך</span><img
-                             src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
-                             class="help-request-info request-payment">75</span>
+                    
+                    <div class="swiper-slide help-request-box">
+                        <div class="inner-help-request-box">
+                            <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
+                            <h6 class="header"> אני מחפש דוגווקר להיום </h6>
+                            <p class="content">
+                                הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
+                            </p>
+                            <div class="help-request-info-box">
+                                <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
+                                class="help-request-info request-time">לפני 7 דק'</span><img
+                                src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
+                                class="help-request-info request-place">7.4 ק"מ ממך</span><img
+                                src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
+                                class="help-request-info request-payment">75</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="swiper-slide help-request-box">
-                    <div class="inner-help-request-box">
-                        <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
-                        <h6 class="header"> אני מחפש דוגווקר להיום </h6>
-                        <p class="content">
-                            הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
-                        </p>
-                        <div class="help-request-info-box">
-                            <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
-                             class="help-request-info request-time">לפני 7 דק'</span><img
-                             src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
-                             class="help-request-info request-place">7.4 ק"מ ממך</span><img
-                             src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
-                             class="help-request-info request-payment">75</span>
+                    
+                    <div class="swiper-slide help-request-box">
+                        <div class="inner-help-request-box">
+                            <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
+                            <h6 class="header"> אני מחפש דוגווקר להיום </h6>
+                            <p class="content">
+                                הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
+                            </p>
+                            <div class="help-request-info-box">
+                                <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
+                                class="help-request-info request-time">לפני 7 דק'</span><img
+                                src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
+                                class="help-request-info request-place">7.4 ק"מ ממך</span><img
+                                src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
+                                class="help-request-info request-payment">75</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-            
-    <div class="help-request-box">
-        <div class="inner-help-request-box">
-            <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
-            <h6 class="header"> אני מחפש דוגווקר להיום </h6>
-            <p class="content">
-            הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
-            </p>
-            <div class="help-request-info-box">
-                <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
-                class="help-request-info request-time">לפני 7 דק'</span><img
-                src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
-                class="help-request-info request-place">7.4 ק"מ ממך</span><img
-                src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
-                class="help-request-info request-payment">75</span>
+                
+        <div class="help-request-box">
+            <div class="inner-help-request-box">
+                <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
+                <h6 class="header"> אני מחפש דוגווקר להיום </h6>
+                <p class="content">
+                הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
+                </p>
+                <div class="help-request-info-box">
+                    <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
+                    class="help-request-info request-time">לפני 7 דק'</span><img
+                    src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
+                    class="help-request-info request-place">7.4 ק"מ ממך</span><img
+                    src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span
+                    class="help-request-info request-payment">75</span>
+                </div>
             </div>
         </div>
     </div>

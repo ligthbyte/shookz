@@ -29,7 +29,7 @@
       <div class="popup" ng-class="{'shown': shownPopup == popup.name }" ng-repeat="popup in popups">
         <div class="inner">
           <p class="popup-caption">{{ popup.caption }}</p>
-          <button class="popup-confirm-btn" ng-click="popupConfirmBtnClick(popup.name, popup.onClose)" ng-if="popup.confirmBtnClick">{{ popup.confirmBtnClick }}</button>
+          <button class="popup-confirm-btn" ng-click="popupConfirmBtnClick(popup.name, popup.onClose)" ng-if="popup.confirmBtnText">{{ popup.confirmBtnText }}</button>
         </div>
       </div>
 

@@ -11,17 +11,20 @@ app.controller('HomeCtrl', function($scope){
                 var streetName = result[0].thoroughfare;
                 var streetNumber = result[0].subThoroughfare;
                 $scope.location = streetName + ' ' + streetNumber + ', ' + city;
-                $scope.$apply();
                 if($scope.watchId){
                     navigator.geolocation.clearWatch($scope.watchId);
                     $scope.watchId = null;
                 }
+                $scope.$apply();
             },
             function (error) {
                 console.log('failed converting coordinates to address, error: ', error);
-                $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך. צא מהאפליקציה וסגור אותה ברקע, ולאחר מכן פתח אותה מחדש.', function () { navigator.app.exitApp(); }, 'צא מהאפליקציה');
-
-                $scope.mainPopupState = true;
+                $scope.addPopup({
+                    name: 'failedCoord',
+                    caption: 'התרחשה שגיאה בעת השגת מיקומך. צא מהאפליקציה וסגור אותה ברקע, ולאחר מכן פתח אותה מחדש.',
+                    onClose: function () { navigator.app.exitApp(); },
+                    confirmBtnText: 'צא מהאפליקציה'
+                });
                 $scope.$apply();
             },
             position.coords.latitude,
@@ -41,25 +44,36 @@ app.controller('HomeCtrl', function($scope){
         }       
     }
     function getUserPosition() {
-        navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 8000 });
+        navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, maximumAge: 60000, timeout: 8000 });
     }    
     function watchUserLocation() {
-        $scope.watchId = navigator.geolocation.watchPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, timeout: 8000 });
+        if(!$scope.watchId){
+            $scope.watchId = navigator.geolocation.watchPosition(onGetLocationSuccess, onGetLocationFail, { enableHighAccuracy: true, maximumAge: 60000, timeout: 8000 });
+            $scope.$apply();
+        }
     }
     function requestLocationAuthorization() {
         cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
             console.log('auth status: ', status);
             switch (status) {
                 case 'GRANTED':
-                    if(!$scope.watchId) watchUserLocation();
+                    $scope.locationAccessible = true;    
+                    $scope.closePopup('locationDisabled');
+                    $scope.$apply(); 
+                    watchUserLocation();
                     break;
                 case 'DENIED_ALWAYS':
                     //TODO: FIX IT
-                    $scope.toggleMainPopup('האפליקציה אינה יכולה לפעול ללא שירותי מיקום, נא הפעל אותם מהגדרות האפליקציה->הרשאות.', function() {                        
-                        cordova.plugins.diagnostic.switchToSettings(function(){
-                            watchUserLocation();
-                        });
-                    }, 'קחו אותי להגדרות האפליקציה');
+                    $scope.addPopup({
+                        name: 'locationDenied',
+                        caption: 'האפליקציה אינה יכולה לפעול ללא שירותי מיקום, נא הפעל אותם מהגדרות האפליקציה->הרשאות.',
+                        onClose: function() {                        
+                            cordova.plugins.diagnostic.switchToSettings(function(){
+                                // watchUserLocation();
+                            });
+                        },
+                        confirmBtnText: 'להגדרות האפליקציה'
+                    });                    
                     $scope.$apply();
                     break;
                 default:
@@ -76,27 +90,43 @@ app.controller('HomeCtrl', function($scope){
                 cordova.plugins.diagnostic.isLocationAuthorized(function(authorized){
                     if(authorized){
                         console.log('location authorized');
+                        $scope.locationAccessible = true;
+                        $scope.$apply();
                         watchUserLocation();
                     }
                     else{
                         requestLocationAuthorization();
                     }
                 }, function (error) {
-                    $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+                    $scope.addPopup({
+                        name: 'locationFailed',
+                        caption: 'התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.',
+                        onClose: null,
+                        confirmBtnText: 'אישור'
+                    });                      
                     $scope.$apply();
                 });            
             }
             else{
-                //TODO: Handle when user go back to app and dont turn on location (maybe create/search some kind of watcher for location services)
-                $scope.toggleMainPopup('נא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקומך הנוכחי.', function () {
-                    window.cordova.plugins.settings.open("location", function() {
-                        initLocation();
-                    });
-                }, 'הפעל שירותי מיקום');
+                $scope.addPopup({
+                    name: 'locationDisabled',
+                    caption: 'נא הפעל שירותי מיקום על מנת שנוכל להתאים את המודעות למיקומך הנוכחי.',
+                    onClose: function () {
+                        window.cordova.plugins.settings.open("location", function() {
+                            initLocation();
+                        });
+                    },
+                    confirmBtnText: 'הפעל שירותי מיקום'
+                }); 
                 $scope.$apply();
             }
         }, function (error) {
-            $scope.toggleMainPopup('התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.');
+            $scope.addPopup({
+                name: 'locationFailed',
+                caption: 'התרחשה שגיאה בעת השגת מיקומך, אנא הזן מיקום ידני.',
+                onClose: null,
+                confirmBtnText: 'אישור'
+            });                  
         });
     }
     cordova.plugins.diagnostic.registerLocationStateChangeHandler(function(state){
@@ -105,15 +135,14 @@ app.controller('HomeCtrl', function($scope){
                 || state === cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
         )){ //location is availbale
             cordova.plugins.diagnostic.registerLocationStateChangeHandler(false); //stop watching
-            watchUserLocation();
+            $scope.closePopup('locationDisabled');
+            $scope.$apply();
+            requestLocationAuthorization();
         }
         else{
             initLocation();
         }
     });
-    $scope.$watch('connectedToInternet', function(){
-        if($scope.connectedToInternet){
-            initLocation();
-        }
-    });
+    
+    initLocation();
 });

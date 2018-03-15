@@ -3,15 +3,29 @@ app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
   $scope.shownPopup = null;
   $scope.popups = [];
   $scope.addPopup = function(options) {
-    console.log('asked popup to open with caption: "' + options.caption + '"');
+    console.log('asked "' + options.name + '" popup to open with caption: "' + options.caption + '"');
+    var isPopupOpened = false;
+    $scope.popups.forEach(function(popup){
+      if(popup.name == options.name){
+        isPopupOpened = true;
+        return;
+      }
+    });
+    if(isPopupOpened){
+      console.log('popup is already open!');
+      return;
+    }
     $scope.popups.push(options);
     $scope.shownPopup = options.name;
   }
   $scope.closePopup = function(name) {
-    console.log('asked popup to close with name: "' + name + '"');
+    console.log('asked "' + name + '" popup to close');
     for(var i = 0; i < $scope.popups.length; i++){
       if($scope.popups[i].name == name){
-        $scope.popups.splice(popupIndex, 1);
+        $scope.popups.splice(i, 1);
+        if($scope.shownPopup == name && $scope.popups.length > 0){
+          $scope.shownPopup = $scope.popups[$scope.popups.length - 1].name;
+        }
         break;
       }  
     }
@@ -22,7 +36,6 @@ app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
   }
 
   //check internet connection
-  $scope.connectedToInternet = false;
   document.addEventListener("offline", function(){
     $scope.addPopup({
       name: 'networkState',
@@ -30,11 +43,9 @@ app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
       onClose: null,
       confirmBtnText: null
     });
-    $scope.connectedToInternet = false;
   }, false);
   document.addEventListener("online", function () {
     $scope.closePopup('networkState');
-    $scope.connectedToInternet = true;
   }, false);  
 
   $scope.changeView = function(viewName){
