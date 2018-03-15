@@ -27,7 +27,7 @@ body{
   font-size: 110%;
   text-align: center;
   background-color: #0396ff; /*Gradient Fallback*/
-  -webkit-background: linear-gradient(#62bcfd, #0396ff);
+  background: -webkit-linear-gradient(#62bcfd, #0396ff);
   background: linear-gradient(#62bcfd, #0396ff);
   border-radius: 4px;
 }
@@ -42,7 +42,7 @@ body{
   font-size: 110%;
   text-align: center;
   background-color: #24327d; /*Gradient Fallback*/
-  -webkit-background: linear-gradient(#3e1a80, #24327d);
+  background: -webkit-linear-gradient(#3e1a80, #24327d);
   background: linear-gradient(#3e1a80, #24327d);
   border-radius: 4px;
 }
@@ -345,7 +345,6 @@ body{
   left: 0;
   width: 100%;
   -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 .register-page form .image-selector .avatars label.avatar i{
@@ -387,7 +386,6 @@ body{
   font-size: 120%;
   border-radius: 4px;
   -webkit-transition: .3s all;
-  -moz-transition: .3s all;
   transition: .3s all;
 }
 .register-page form .field-box.gender .gender-btn.selected{
@@ -408,7 +406,6 @@ body{
   font-size: 70%;
   line-height: 1.55;
   -webkit-transition: .3s all;
-  -moz-transition: .3s all;
   transition: .3s all;
   content: '\f00c';
 }
@@ -483,14 +480,13 @@ body{
 }
 .view-animate-container > .slide{
   width: 100%;
-  height: calc(100% - 63px);
+  height: calc(100% - 95px);
   overflow-y: auto;
   overflow-x: hidden;
 }
 .view-animate-container > .slide.ng-enter {
   opacity: 0;
   -webkit-transition: all ease 0.5s;
-  -moz-transition: all ease 0.5s;
   transition: all ease 0.5s;    
 }
 .view-animate-container > .slide.ng-enter.ng-enter-active {
@@ -499,7 +495,6 @@ body{
 .view-animate-container > .slide.ng-leave {
   opacity: 1;
   -webkit-transition: all ease 0.5s;
-  -moz-transition: all ease 0.5s;
   transition: all ease 0.5s;    
 }
 .view-animate-container > .slide.ng-leave.ng-leave-active{
@@ -510,7 +505,7 @@ body{
 .top-user-info{
   position: relative;
   background-color: #5e35b1;
-  padding: 20px 20px 15px 0;
+  padding: 20px 20px 14px 0;
   color: white;  
 }
 .top-user-info .user-profile{
@@ -526,19 +521,19 @@ body{
   border: 2px solid white;  
 }
 .top-user-info .user-profile .points-count{
-    position: absolute;
-    display: block;
-    top: -12px;
-    right: -12px;
-    width: 32px;
-    height: 32px;
-    text-align: center;
-    line-height: 1;
-    font-size: 75%;
-    border-radius: 50%;
-    min-width: 0;
-    padding: 2px 0 0 0;
-    font-weight: bold;
+  position: absolute;
+  display: block;
+  top: -12px;
+  right: -12px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  line-height: 1;
+  font-size: 75%;
+  border-radius: 50%;
+  min-width: 0;
+  padding: 2px 0 0 0;
+  font-weight: bold;
 }
 .top-user-info .user-location{
   display: inline-block;
@@ -569,7 +564,6 @@ body{
   font-size: 100%;
   letter-spacing: -0.5px;  
   -webkit-transform: translateY(-50%);  
-  -moz-transform: translateY(-50%);  
   transform: translateY(-50%);  
 }
 .top-user-info .ask-help-btn img{
@@ -590,16 +584,56 @@ body{
 }
 
 /* Main Page */
+.search-box{
+  background-color: #5e35b1;
+  padding: 10px 5% 15px 5%;
+}
+.search-box .search-input-box{
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+}
+.search-box .search-input-box .search-input{
+  display: inline-block;
+  border-bottom: 1px solid white;
+  background-color: rgba(0,0,0,0);
+  width: 100%;
+  color: white;
+  padding-bottom: 2px;
+}
+.search-box .search-input-box label{
+  display: inline-block;  
+  position: absolute;
+  bottom: 4px;
+  right: 0;
+  color:white;
+  pointer-events: none;
+  -webkit-transition: .2s all;
+  transition: .2s all;
+}
+.search-box .search-input-box .search-input.ng-not-empty + label,
+.search-box .search-input-box .search-input:focus + label{
+  bottom: 100%;
+  font-size: 80%;
+}
+.fa-search{
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  color: white;
+  pointer-events: none;
+}
 
 .swiper-background{
   background-color: #f1ce2e;
   padding-bottom: 5px;
+  overflow-x: hidden;
 }
 .swiper-background .notice-box{
   text-align: right;
   margin-bottom: 10px;
   padding: 5px;
-  padding-right: 20px;
+  padding-right: 5%;
   background-color: rgba(30,30,30,.3);
   font-size: 80%;
   font-weight: bold;
@@ -622,6 +656,23 @@ body{
   padding: 0 5%;
   overflow: visible;
 }
+.swiper-background .swiper-container .swiper-button-prev,
+.swiper-background .swiper-container .swiper-button-next{
+  background-image: none!important;
+  height: auto!important;
+  width: auto!important;
+  background-color: rgb(245, 245, 245);
+  padding: 6px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, .5);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, .5);
+  margin-top: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+ }
+.swiper-background .swiper-container .swiper-arrows{
+  color: rgb(120, 120, 120);
+}
 .swiper-background .swiper-container .swiper-wrapper, .swiper-container .swiper-wrapper .swiper-slide{
   height: auto !important;  
 }
@@ -631,11 +682,16 @@ body{
   left: 8px;
   width: 50px;
   z-index: 20;
+  -webkit-box-shadow: 0px 0px 10px 2px #b1c5d5;
+  box-shadow: 0px 0px 10px 2px #b1c5d5;
+  border-radius: 50%;
 }
 .swiper-background .swiper-container .swiper-wrapper .swiper-slide.help-request-box .inner-help-request-box .header{
   width: calc(100% - 130px);
 }
-
+.swiper-container .swiper-wrapper .swiper-slide.help-request-box .inner-help-request-box .content{
+  width: 94%;
+}
 
 .help-request-box{
   position: relative;
@@ -643,7 +699,6 @@ body{
   margin: 10px auto;
   border: 1px solid #e3e3e3;
   -webkit-box-shadow: 0px 0px 14px #e3e3e3;
-     -moz-box-shadow: 0px 0px 14px #e3e3e3;
           box-shadow: 0px 0px 14px #e3e3e3;
   background-image: url("../img/help-request-box/help-request-box-background.png");
   background-repeat: no-repeat;
@@ -663,8 +718,8 @@ body{
   height: 100%;
   z-index: 1;
   content: "";
-  -webkit-background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
-          background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
+  background: -webkit-linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
+  background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
 }
 .help-request-box .inner-help-request-box{
   z-index: 10;

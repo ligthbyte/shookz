@@ -4,6 +4,14 @@
         <h4>מיקומך אינו זמין</h4>
     </div>
     <div class="posts-container" ng-show="locationAccessible">
+        <div class="search-box">
+            <div class="search-input-box">
+                <input id="searchField" type="text" class="search-input" ng-model="searchField">
+                <label for="searchField">חיפוש</label>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+        </div>
+        
         <div class="swiper-background"> 
             <div class="notice-box">
                 <span class="notice">הידעת</span>
@@ -11,6 +19,7 @@
                 <span class="notice">מודעות דחופות מזכות ביותר נקודות</span>
             </div> 
             <div class="swiper-container">
+
                 <div class="swiper-wrapper">
                     <div class="swiper-slide help-request-box">
                         <img src="img/help-request-box/recommended.png" alt="מומלץ" class="recommended-icon">
@@ -32,6 +41,7 @@
                     </div>
                     
                     <div class="swiper-slide help-request-box">
+                        <img src="img/help-request-box/recommended.png" alt="מומלץ" class="recommended-icon">
                         <div class="inner-help-request-box">
                             <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
                             <h6 class="header"> אני מחפש דוגווקר להיום </h6>
@@ -50,6 +60,7 @@
                     </div>
                     
                     <div class="swiper-slide help-request-box">
+                        <img src="img/help-request-box/recommended.png" alt="מומלץ" class="recommended-icon">
                         <div class="inner-help-request-box">
                             <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
                             <h6 class="header"> אני מחפש דוגווקר להיום </h6>
@@ -66,6 +77,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="fa fa-arrow-right swiper-arrows"></i>
+                </div>
+                <div class="swiper-button-next">
+                    <i class="fa fa-arrow-left swiper-arrows"></i>
                 </div>
             </div>
         </div>
