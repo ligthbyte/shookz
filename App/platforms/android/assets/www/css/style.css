@@ -772,3 +772,22 @@ body{
 .help-request-box .inner-help-request-box .help-request-info-box .request-payment{
   width: calc(20% - 18px);
  }
+ 
+/* Coins Page */
+
+.head-coins-page{
+  background-color: #00bcd4;
+}
+.head-coins-page .coins-icon,
+.head-coins-page .person-icon{
+  display: inline-block;
+  width: 20%;
+}
+.quantity-coins-box{
+  width: 30%;
+}
+.quantity-coins-box .head-coins-page .quantity-coins{
+  display: inline-block;
+  color: white;
+  font-size: 200%;
+}
