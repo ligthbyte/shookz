@@ -10,7 +10,8 @@ var app = angular.module('mainApp', ['ngCordova', 'ngAnimate', 'ngRoute'])
   $routeProvider.
     when('/', {
       templateUrl: './views/home.html',
-      controller: 'HomeCtrl'
+      controller: 'HomeCtrl',
+      reloadOnSearch: false //prevent page refresh on ng-include change when changing url's param
     }).
     when('/login', {
         templateUrl: './views/login.html',

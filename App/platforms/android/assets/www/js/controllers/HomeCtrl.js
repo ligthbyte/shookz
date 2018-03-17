@@ -1,7 +1,15 @@
-app.controller('HomeCtrl', function($scope){
-    $scope.currentView = 'main';
+app.controller('HomeCtrl', function($scope, $location){
     $scope.location = 'טוען את מיקומך...';
     
+    //added ng-include support for browser history
+    $scope.getCurrentView = function(){
+        var page = $location.search()['page'];
+        return page ? page : 'main';
+    }
+    $scope.changeInnerView = function(page){
+        $location.search('page', page);
+    }
+
     function onGetLocationSuccess(position) {
         console.log('succeed getting coordinates!', position);
         nativegeocoder.reverseGeocode(

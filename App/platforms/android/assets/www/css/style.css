@@ -782,12 +782,15 @@ body{
 .head-coins-page .person-icon{
   display: inline-block;
   width: 20%;
+  vertical-align: middle;
 }
-.quantity-coins-box{
-  width: 30%;
-}
-.quantity-coins-box .head-coins-page .quantity-coins{
+.head-coins-page .quantity-coins-box{
   display: inline-block;
+  width: 30%;
+  vertical-align: middle;
+}
+.head-coins-page .quantity-coins-box .quantity-coins{
+  display: block;
   color: white;
   font-size: 200%;
 }

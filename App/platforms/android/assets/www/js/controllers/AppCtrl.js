@@ -1,5 +1,5 @@
 app.controller('AppCtrl', function ($scope, $location, $route, $timeout, api){
-  //main popup
+  //popups
   $scope.shownPopup = null;
   $scope.popups = [];
   $scope.addPopup = function(options) {
