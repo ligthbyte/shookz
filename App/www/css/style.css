@@ -886,3 +886,36 @@ body{
 .page-coins .coins-history .history-tab .coins-history-text-box .coins-history-source{
   font-size: 80%;
 }
+.page-help .ad-summary-box{
+  background-color: #3fa1d4;
+}
+.page-help .ad-summary-box .flower-icon,
+.page-help .ad-summary-box .ad-summary{
+  display: inline-block;
+  vertical-align: middle;
+}
+.page-help .ad-summary-box .flower-icon{
+  width: 30px;
+  margin-right: 20px;
+}
+.page-help .ad-summary-box .ad-summary{
+  width: calc(100% - 50px);
+  padding: 10px;
+}
+.page-help .ad-summary-box .ad-summary .title{
+  display: block;
+  color: white;
+  font-size: 100%;
+  line-height: 1.5;
+}
+.page-help .ad-summary-box .ad-summary .coin-icon,
+.page-help .ad-summary-box .ad-summary .description{
+  display: inline-block;
+  vertical-align: middle;
+}
+.page-help .ad-summary-box .ad-summary .coin-icon{
+  width: 19px;
+ }
+.page-help .ad-summary-box .ad-summary .description{
+  font-size: 80%;
+}
