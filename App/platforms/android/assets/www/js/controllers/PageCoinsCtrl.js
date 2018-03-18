@@ -1,3 +1,9 @@
 app.controller('PageCoinsCtrl', function($scope){
-    $scope.h1 = 'COINS';
+    //init swiper
+    var mySwiper = new Swiper('.coins-nav', {
+        observer: true,
+        autoHeight: true,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+    });
 });

@@ -14,7 +14,7 @@
           <span>בקש עזרה</span>
       </button>
     </header>
-    <div class="slide" ng-class="currentView" ng-include="'./views/page-' + getCurrentView() + '.html'"></div>
+    <div class="slide" ng-class="'page-' + getCurrentView()" ng-include="'./views/page-' + getCurrentView() + '.html'"></div>
   </div>
   
   <nav class="main-nav">
