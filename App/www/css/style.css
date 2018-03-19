@@ -694,6 +694,7 @@ body{
   width: 94%;
 }
 
+.page-help .preview .help-request-box,
 .page-main .help-request-box{
   position: relative;
   width: 90%;
@@ -711,6 +712,7 @@ body{
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.page-help .preview .help-request-box::after,
 .page-main .help-request-box::after{
   position: absolute;
   top: 0;
@@ -722,10 +724,12 @@ body{
   background: -webkit-linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
   background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
 }
+.page-help .preview .help-request-box .inner-help-request-box,
 .page-main .help-request-box .inner-help-request-box{
   z-index: 10;
   position: relative;
 }
+.page-help .preview .help-request-box .inner-help-request-box .user-image,
 .page-main .help-request-box .inner-help-request-box .user-image{
   display: inline-block;
   border: 2px solid white;
@@ -734,6 +738,7 @@ body{
   border-radius: 50%;
   vertical-align: middle;
 }
+.page-help .preview .help-request-box .inner-help-request-box .header,
 .page-main .help-request-box .inner-help-request-box .header{
   display: inline-block;
   vertical-align: middle;
@@ -743,6 +748,7 @@ body{
   font-size: 100%;
   font-weight: bold;  
 }
+.page-help .preview .help-request-box .inner-help-request-box .content,
 .page-main .help-request-box .inner-help-request-box .content{
   display: block;
   margin: 5px auto;
@@ -750,26 +756,32 @@ body{
   font-size: 85%;
   line-height: 1.2;
 }
+.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box{
   padding: 5px;
   max-width: 450px;
 }
+.page-help .preview .help-request-box .inner-help-request-box .help-request-info,
 .page-main .help-request-box .inner-help-request-box .help-request-info{
   display: inline-block;
   font-size: 70%;
   vertical-align: middle;
   padding: 0 5px;
 }
+.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-icon,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-icon{
   display: inline-block;
   height: 18px;
   width: 18px;
   vertical-align: middle;
 }
+.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-time, 
+.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-place,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-time, 
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-place{
   width: calc(40% - 18px);
 }
+.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-payment,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-payment{
   width: calc(20% - 18px);
  }
@@ -896,16 +908,16 @@ body{
 }
 .page-help .ad-summary-box .flower-icon{
   width: 30px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .page-help .ad-summary-box .ad-summary{
-  width: calc(100% - 50px);
+  width: calc(100% - 40px);
   padding: 10px;
 }
 .page-help .ad-summary-box .ad-summary .title{
   display: block;
   color: white;
-  font-size: 100%;
+  font-size: 120%;
   line-height: 1.5;
 }
 .page-help .ad-summary-box .ad-summary .coin-icon,
@@ -918,4 +930,49 @@ body{
  }
 .page-help .ad-summary-box .ad-summary .description{
   font-size: 80%;
+}
+.page-help .preview{
+  padding: 5px 0;
+}
+.page-help .preview .note,
+.page-help .preview .preview-title{
+  display: block;
+  font-weight: bold;
+  padding-left: 20px;
+  margin-right: 50px;
+  margin-top: 15px;
+  line-height: 1.3;
+}
+.page-help .preview .preview-title{
+  font-size: 110%;
+}
+.page-help .preview .note{
+  color: #3c2077;
+  font-size: 90%;
+}
+.page-help .preview .help-request-box + .note{
+  margin-top: 30px;
+}
+.page-help .preview .note span{
+  display: block;
+}
+.page-help .help-buttons{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.page-help .help-buttons .undo,
+.page-help .help-buttons .confirm{
+  color: white;
+  font-size: 140%;
+  padding: 10px;
+  width: 115px;
+  border-radius: 5px;
+}
+.page-help .help-buttons .undo{
+  background-color: #383636;
+  margin-left: 10px;
+}
+.page-help .help-buttons .confirm{
+  background-color: #356dcf;
 }
