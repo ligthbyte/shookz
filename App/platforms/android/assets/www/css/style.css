@@ -898,44 +898,134 @@ body{
 .page-coins .coins-history .history-tab .coins-history-text-box .coins-history-source{
   font-size: 80%;
 }
-.page-help .ad-summary-box{
+
+/* Help Pages */
+
+.page-help .first-help-page .create-ad .create-ad-title{
+  display: block;
+  border-bottom: 1px solid #232323;
+  padding-left: 20px;
+  margin-right: 50px;
+  width: calc(100% - 70px);
+  padding: 10px 0
+} 
+
+.page-help .first-help-page .create-ad label{
+  display: block;
+  color: #7e7a7a;
+  width: calc(100% - 50px);
+  margin-right: 50px;
+}
+.page-help .first-help-page .create-ad .label-create-title{
+  margin-top: 15px;
+  margin-right: 50px;
+  font-size: 80%;
+}
+.page-help .first-help-page .create-ad .label-create-body{
+  text-align: left;
+  font-size: 70%;
+  margin-top: 15px;
+  padding-left: 20px;
+}
+.page-help .first-help-page .create-ad .note{
+  color: #3c2077;
+  font-size: 80%;
+}
+.page-help .first-help-page .create-ad .create-ad-body{
+  background-color: #f6f6f6;
+  width: calc(100% - 70px);
+  margin-right: 50px;
+  border: 1px solid #dadada;
+  padding: 10px;
+}
+.page-help .first-help-page .create-ad .replace,
+.page-help .first-help-page .create-ad .create-ad-location{
+  display: inline-block;
+  font-size: 80%;
+  vertical-align: bottom;
+}
+.page-help .first-help-page .create-ad .replace{
+  color: #462b7e;
+  font-weight: bold;
+  text-align: left;
+  width: calc(50% - 75px);
+  line-height: 1.3;
+}
+.page-help .first-help-page .create-ad .create-ad-location{
+  color: #444444;
+  width: 50%;
+}
+.page-help .first-help-page .create-ad .btn-next-level{
+  display: block;
+  margin: 40px auto;
+  background-color: #356dcf;
+}
+
+.page-help .second-help-page .create-ad-part-two{
+  padding: 15px 50px 15px 20px;
+}
+
+
+.page-help .first-help-page .create-ad-header,
+.page-help .second-help-page .create-ad-header,
+.page-help .final-help-page .ad-summary-box{
   background-color: #3fa1d4;
 }
-.page-help .ad-summary-box .flower-icon,
-.page-help .ad-summary-box .ad-summary{
+.page-help .first-help-page .create-ad-header .flower-icon,
+.page-help .first-help-page .create-ad-header .create-ad-inner-header,
+.page-help .second-help-page .create-ad-header .flower-icon,
+.page-help .second-help-page .create-ad-header .create-ad-inner-header,
+.page-help .final-help-page .ad-summary-box .flower-icon,
+.page-help .final-help-page .ad-summary-box .ad-summary{
   display: inline-block;
   vertical-align: middle;
 }
-.page-help .ad-summary-box .flower-icon{
+.page-help .first-help-page .create-ad-header .flower-icon,
+.page-help .second-help-page .create-ad-header .flower-icon,
+.page-help .final-help-page .ad-summary-box .flower-icon{
   width: 30px;
   margin-right: 10px;
 }
-.page-help .ad-summary-box .ad-summary{
+.page-help .first-help-page .create-ad-header .create-ad-inner-header,
+.page-help .second-help-page .create-ad-header .create-ad-inner-header,
+.page-help .final-help-page .ad-summary-box .ad-summary{
   width: calc(100% - 40px);
   padding: 10px;
 }
-.page-help .ad-summary-box .ad-summary .title{
+.page-help .first-help-page .create-ad-header .create-ad-inner-header .title-help-header,
+.page-help .second-help-page .create-ad-header .create-ad-inner-header .title-help-header,
+.page-help .final-help-page .ad-summary-box .ad-summary .title-help-header{
   display: block;
   color: white;
   font-size: 120%;
   line-height: 1.5;
 }
-.page-help .ad-summary-box .ad-summary .coin-icon,
-.page-help .ad-summary-box .ad-summary .description{
+.page-help .first-help-page .create-ad-header .create-ad-inner-header .coin-icon,
+.page-help .first-help-page .create-ad-header .create-ad-inner-header .description,
+.page-help .second-help-page .create-ad-header .create-ad-inner-header .coin-icon,
+.page-help .second-help-page .create-ad-header .create-ad-inner-header .description,
+.page-help .final-help-page .ad-summary-box .ad-summary .coin-icon,
+.page-help .final-help-page .ad-summary-box .ad-summary .description{
   display: inline-block;
   vertical-align: middle;
 }
-.page-help .ad-summary-box .ad-summary .coin-icon{
+.page-help .first-help-page .create-ad-header .create-ad-inner-header .coin-icon,
+.page-help .second-help-page .create-ad-header .create-ad-inner-header .coin-icon,
+.page-help .final-help-page .ad-summary-box .ad-summary .coin-icon{
   width: 19px;
  }
-.page-help .ad-summary-box .ad-summary .description{
+.page-help .first-help-page .create-ad-header .description,
+.page-help .second-help-page .create-ad-header .description,
+.page-help .final-help-page .ad-summary-box .ad-summary .description{
   font-size: 80%;
 }
-.page-help .preview{
+.page-help .final-help-page .preview{
   padding: 5px 0;
 }
-.page-help .preview .note,
-.page-help .preview .preview-title{
+.page-help .first-help-page .create-ad span,
+.page-help .first-help-page .create-ad .note,
+.page-help .final-help-page .preview .note,
+.page-help .final-help-page .preview .preview-title{
   display: block;
   font-weight: bold;
   padding-left: 20px;
@@ -943,36 +1033,43 @@ body{
   margin-top: 15px;
   line-height: 1.3;
 }
-.page-help .preview .preview-title{
+.page-help .final-help-page .preview .preview-title{
   font-size: 110%;
 }
-.page-help .preview .note{
+.page-help .final-help-page .preview .note{
   color: #3c2077;
   font-size: 90%;
 }
-.page-help .preview .help-request-box + .note{
+.page-help .final-help-page .preview .help-request-box + .note{
   margin-top: 30px;
 }
-.page-help .preview .note span{
+.page-help .final-help-page .preview .note span{
   display: block;
 }
-.page-help .help-buttons{
+.page-help .final-help-page .help-buttons{
   margin-top: 50px;
   margin-bottom: 20px;
   text-align: center;
 }
-.page-help .help-buttons .undo,
-.page-help .help-buttons .confirm{
+.page-help .first-help-page .create-ad .btn-next-level,
+.page-help .second-help-page .help-buttons .undo,
+.page-help .second-help-page .help-buttons .confirm,
+.page-help .final-help-page .help-buttons .undo,
+.page-help .final-help-page .help-buttons .confirm{
   color: white;
   font-size: 140%;
   padding: 10px;
   width: 115px;
   border-radius: 5px;
 }
-.page-help .help-buttons .undo{
+.page-help .second-help-page .help-buttons .undo,
+.page-help .final-help-page .help-buttons .undo{
+  display: inline-block;
   background-color: #383636;
   margin-left: 10px;
 }
-.page-help .help-buttons .confirm{
+.page-help .second-help-page .help-buttons .confirm,
+.page-help .final-help-page .help-buttons .confirm{
+  display: inline-block;
   background-color: #356dcf;
 }

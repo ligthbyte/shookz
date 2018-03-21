@@ -1,43 +1,98 @@
 <div ng-controller="PageHelpCtrl">
 
-    <div class="ad-summary-box">
-        <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon"><div
-         class="ad-summary">
+    <div class="first-help-page" style="display:none;">
+        <div class="create-ad-header">
+            <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon">
+            <div class="create-ad-inner-header">
+                <span class="title-help-header">יצירת מודעה חדשה</span>
+                <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon">
+                <span class="description">בעלות בסיסית של 10 מטבעות</span>
+            </div>
+        </div>
+        <div class="create-ad">
+            <label class="label-create-title">כותרת המודעה (נשארו 17 תווים)</label>
+            <input type="text" class="create-ad-title">
+            <span>פירוט</span>
+            <span class="note">מומלץ להוסיף כמה שיותר פרטים להעלאת המשיכה למודעה.</span>
+            <label class="label-create-body">נשארו 28 תווים</label>
+            <textarea name="" cols="40" rows="10" class="create-ad-body" placeholder="כתוב את הפירוט כאן..."></textarea>
+            <span>מיקום</span>
+            <span class="create-ad-location">שיבת ציון 3, ראשון לציון</span>
+            <a href="" class="replace">החלף מיקום</a>
+            <button class="btn-next-level">הבא</button>
+        </div>
+    </div>
+
+    <div class="second-help-page">
+        <div class="create-ad-header">
+            <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon"><div
+             class="create-ad-inner-header">
+                <span class="title-help-header">יצירת מודעה חדשה</span>
+                <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon">
+                <span class="description">בעלות בסיסית של 10 מטבעות</span>
+            </div>
+        </div>
+        <div class="create-ad-part-two">
+            <div class="">
+                <label for="">רמת הדחיפות</label>
+                <span class="note" ></span>
+            </div>
+            <div class="">
+                <label for="">רדיוס החיפוש</label>
+                <span></span>
+            </div>
+            <div class="">
+                <label for="">זמן הופעת המודעה</label>
+                <span class="note" ></span>
+            </div>
+        </div>
+        <div class="help-buttons">
+            <button class="undo">חזור</button>
+            <button class="confirm">הבא</button>
+        </div>
+    </div>
+
+    <div class="final-help-page" style="display:none;">
+        <div class="ad-summary-box">
+            <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon"><div
+            class="ad-summary">
             <span class="title">סיכום מודעה</span>
             <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon">
             <span class="description">עלות סופית של 15 מטבעות</span>
+            </div>
         </div>
-    </div>
-    <div class="preview">
-        <span class="preview-title">תצוגה מקדימה של המודעה</span>
-        <span class="note">כך תוצג המודעה בלוח המודעות</span>
-
-                <div class="help-request-box">
-                    <!-- help-request-box CSS Was taken from Main Page CSS -->
-                    <div class="inner-help-request-box">
-                        <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
-                        <h6 class="header"> אני מחפש דוגווקר להיום </h6>
-                        <p class="content">
-                            הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
-                        </p>
-                        <div class="help-request-info-box">
-                            <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
-                             class="help-request-info request-time">לפני 7 דק'</span><img
-                             src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
-                             class="help-request-info request-place">7.4 ק"מ ממך</span><img 
-                             src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span 
-                             class="help-request-info request-payment">75</span>
-                        </div>
+        <div class="preview">
+            <span class="preview-title">תצוגה מקדימה של המודעה</span>
+            <span class="note">כך תוצג המודעה בלוח המודעות</span>
+            
+            <div class="help-request-box">
+                <!-- help-request-box CSS Was taken from Main Page CSS -->
+                <div class="inner-help-request-box">
+                    <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
+                    <h6 class="header"> אני מחפש דוגווקר להיום </h6>
+                    <p class="content">
+                        הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
+                    </p>
+                    <div class="help-request-info-box">
+                        <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
+                        class="help-request-info request-time">לפני 7 דק'</span><img
+                        src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
+                        class="help-request-info request-place">7.4 ק"מ ממך</span><img 
+                        src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span 
+                        class="help-request-info request-payment">75</span>
                     </div>
                 </div>
+            </div>
+            
+            <span class="note">המודעה שלך הינה מודעה מקודמת,
+                <span>היא תוצג בתדירות גבוהה יותר למשתמשים ותחת הסקשן "מומלץ".</span>
+            </span>
+            <span class="note">שים לב, מרגע אישור המודעה תוכל לצפות ולערוך אותה באיזור האישי - המודעות שלי.</span>
+        </div>
+        <div class="help-buttons">
+            <button class="undo">חזור</button>
+            <button class="confirm">אישור</button>
+        </div>
+    </div>
 
-        <span class="note">המודעה שלך הינה מודעה מקודמת,
-            <span>היא תוצג בתדירות גבוהה יותר למשתמשים ותחת הסקשן "מומלץ".</span>
-        </span>
-        <span class="note">שים לב, מרגע אישור המודעה תוכל לצפות ולערוך אותה באיזור האישי - המודעות שלי.</span>
-    </div>
-    <div class="help-buttons">
-        <button class="undo">חזור</button>
-        <button class="confirm">אישור</button>
-    </div>
 </div>
