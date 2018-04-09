@@ -653,7 +653,8 @@ body{
   color: rgb(255, 255, 255);
 }
 .page-main .swiper-background .swiper-container{
-  padding: 0 5%;
+  width: 95%;
+  margin: 0 auto;
   overflow: visible;
 }
 .page-main .swiper-background .swiper-container .swiper-button-prev,
@@ -691,10 +692,10 @@ body{
   width: calc(100% - 130px);
 }
 .page-main .swiper-container .swiper-wrapper .swiper-slide.help-request-box .inner-help-request-box .content{
-  width: 94%;
+  width: 80%;
 }
 
-.page-help .preview .help-request-box,
+.final-help-page .preview .help-request-box,
 .page-main .help-request-box{
   position: relative;
   width: 90%;
@@ -712,7 +713,7 @@ body{
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-help .preview .help-request-box::after,
+.final-help-page .preview .help-request-box::after,
 .page-main .help-request-box::after{
   position: absolute;
   top: 0;
@@ -721,15 +722,15 @@ body{
   height: 100%;
   z-index: 1;
   content: "";
-  background: -webkit-linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
-  background: linear-gradient(rgba(255,255,255,.8) 60% rgba(0,0,0,0));
+  background: -webkit-linear-gradient(rgba(255,255,255,.8) 60%, rgba(0,0,0,0));
+  background: linear-gradient(rgba(255,255,255,.8) 60%, rgba(0,0,0,0));
 }
-.page-help .preview .help-request-box .inner-help-request-box,
+.final-help-page .preview .help-request-box .inner-help-request-box,
 .page-main .help-request-box .inner-help-request-box{
   z-index: 10;
   position: relative;
 }
-.page-help .preview .help-request-box .inner-help-request-box .user-image,
+.final-help-page .preview .help-request-box .inner-help-request-box .user-image,
 .page-main .help-request-box .inner-help-request-box .user-image{
   display: inline-block;
   border: 2px solid white;
@@ -738,7 +739,7 @@ body{
   border-radius: 50%;
   vertical-align: middle;
 }
-.page-help .preview .help-request-box .inner-help-request-box .header,
+.final-help-page .preview .help-request-box .inner-help-request-box .header,
 .page-main .help-request-box .inner-help-request-box .header{
   display: inline-block;
   vertical-align: middle;
@@ -748,7 +749,7 @@ body{
   font-size: 100%;
   font-weight: bold;  
 }
-.page-help .preview .help-request-box .inner-help-request-box .content,
+.final-help-page .preview .help-request-box .inner-help-request-box .content,
 .page-main .help-request-box .inner-help-request-box .content{
   display: block;
   margin: 5px auto;
@@ -756,32 +757,32 @@ body{
   font-size: 85%;
   line-height: 1.2;
 }
-.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box,
+.final-help-page .preview .help-request-box .inner-help-request-box .help-request-info-box,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box{
   padding: 5px;
   max-width: 450px;
 }
-.page-help .preview .help-request-box .inner-help-request-box .help-request-info,
+.final-help-page .preview .help-request-box .inner-help-request-box .help-request-info,
 .page-main .help-request-box .inner-help-request-box .help-request-info{
   display: inline-block;
   font-size: 70%;
   vertical-align: middle;
   padding: 0 5px;
 }
-.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-icon,
+.final-help-page .preview .help-request-box .inner-help-request-box .help-request-info-box .request-icon,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-icon{
   display: inline-block;
   height: 18px;
   width: 18px;
   vertical-align: middle;
 }
-.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-time, 
-.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-place,
+.final-help-page .preview .help-request-box .inner-help-request-box .help-request-info-box .request-time, 
+.final-help-page .preview .help-request-box .inner-help-request-box .help-request-info-box .request-place,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-time, 
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-place{
   width: calc(40% - 18px);
 }
-.page-help .preview .help-request-box .inner-help-request-box .help-request-info-box .request-payment,
+.final-help-page .preview .help-request-box .inner-help-request-box .help-request-info-box .request-payment,
 .page-main .help-request-box .inner-help-request-box .help-request-info-box .request-payment{
   width: calc(20% - 18px);
  }
@@ -928,8 +929,8 @@ body{
   padding-left: 20px;
 }
 .page-help .first-help-page .create-ad .note,
-.page-help .second-help-page .create-ad-part-two .urgency .note,
-.page-help .second-help-page .create-ad-part-two .ad-time .note{
+.second-help-page .create-ad-part-two .urgency .note,
+.second-help-page .create-ad-part-two .ad-time .note{
   color: #3c2077;
   font-size: 80%;
 }
@@ -962,91 +963,102 @@ body{
   margin: 40px auto;
   background-color: #356dcf;
 }
-.page-help .second-help-page .create-ad-part-two .scroll-box{
-  width: 100%;
+.second-help-page .create-ad-part-two img{
+  margin-right: 10px;
+}
+.second-help-page .create-ad-part-two .scroll-box .range-bg{
+  position: relative;
+  height: 10px;
   overflow: visible;
-
+  width: calc(100% - 70px);
+  background-color: #042b3f;
+  margin: 40px auto;
+  border-radius: 100px;
 }
-.page-help .second-help-page .create-ad-part-two .scroll-box .movingIcon{
+.second-help-page .create-ad-part-two .scroll-box .range-bg .range{
+  position: absolute;
   display: block;
-  margin-right: 50px;
-  height: 25px;
-  width: 25px;
+  top: -20px;
+  left: 0;
+  width: 50px;
+  height: 50px;
 }
-.page-help .second-help-page .create-ad-part-two .scroll-box span{
+
+.second-help-page .create-ad-part-two .scroll-box span{
   display: block;
   font-size: 70%;
   margin: 10px 50px 5px 0;
 }
-.page-help .second-help-page .create-ad-part-two .ad-time .ad-hours,
-.page-help .second-help-page .create-ad-part-two .urgency .urgency-level{
+.second-help-page .create-ad-part-two .ad-time .ad-hours,
+.second-help-page .create-ad-part-two .urgency .urgency-level{
   padding: 5px 0 5px 20px;
   margin: 10px 47px 5px 0;
 }
-.page-help .second-help-page .create-ad-part-two .ad-time .ad-hours button,
-.page-help .second-help-page .create-ad-part-two .urgency .urgency-level button{
+.second-help-page .create-ad-part-two .ad-time .ad-hours button,
+.second-help-page .create-ad-part-two .urgency .urgency-level button{
   display: inline-block;
   background-color: #f1f1f1;
-  border-radius: 3px;
+  border-radius: 4px;
   font-weight: bold;
+  margin: 3px 1px;
+  padding: 3px 8px;
 }
-.page-help .second-help-page .create-ad-part-two .ad-time .ad-hours button:focus,
-.page-help .second-help-page .create-ad-part-two .urgency .urgency-level button:focus{
-  background-color: #4eb5ff;
+.second-help-page .create-ad-part-two .ad-time .ad-hours button:focus,
+.second-help-page .create-ad-part-two .urgency .urgency-level button:focus{
   color: white;
+  background: -webkit-linear-gradient(to right, rgba(78,181,255,.5) 20%, rgba(78,181,255,1)); 
+  background: linear-gradient(to right, rgba(78,181,255,.5) 20%, rgba(78,181,255,1)); 
 }
-.page-help .second-help-page .help-buttons{
+.second-help-page .help-buttons{
   text-align: center;
   margin: 20px 0;
 }
-.page-help .second-help-page .create-ad-part-two .urgency label,
-.page-help .second-help-page .create-ad-part-two .scroll-box label,
-.page-help .second-help-page .create-ad-part-two .ad-time label{
+.second-help-page .create-ad-part-two .urgency label,
+.second-help-page .create-ad-part-two .scroll-box label,
+.second-help-page .create-ad-part-two .ad-time label{
   display: block;
   font-weight: bold;
   padding-left: 20px;
   line-height: 1.3;
   margin: 25px 50px 10px 0 ;
 }
-.page-help .second-help-page .create-ad-part-two .urgency .note,
-.page-help .second-help-page .create-ad-part-two .ad-time .note{
+.second-help-page .create-ad-part-two .urgency .note,
+.second-help-page .create-ad-part-two .ad-time .note{
   padding-left: 20px;
-   margin-right: 31px;
+  margin-right: 21px;
   line-height: 1.2;
   width: calc(100% - 50px);
-/*   box-sizing: border-box; */
 }
 
-
 .page-help .first-help-page .create-ad-header,
-.page-help .second-help-page .create-ad-header,
-.page-help .final-help-page .ad-summary-box{
+.second-help-page .create-ad-header,
+.final-help-page .ad-summary-box{
   background-color: #3fa1d4;
 }
 .page-help .first-help-page .create-ad-header .flower-icon,
 .page-help .first-help-page .create-ad-header .create-ad-inner-header,
-.page-help .second-help-page .create-ad-header .flower-icon,
-.page-help .second-help-page .create-ad-header .create-ad-inner-header,
-.page-help .final-help-page .ad-summary-box .flower-icon,
-.page-help .final-help-page .ad-summary-box .ad-summary{
+.second-help-page .create-ad-header .flower-icon,
+.second-help-page .create-ad-header .create-ad-inner-header,
+.final-help-page .ad-summary-box .flower-icon,
+.final-help-page .ad-summary-box .ad-summary{
   display: inline-block;
   vertical-align: middle;
 }
 .page-help .first-help-page .create-ad-header .flower-icon,
-.page-help .second-help-page .create-ad-header .flower-icon,
-.page-help .final-help-page .ad-summary-box .flower-icon{
+.second-help-page .create-ad-header .flower-icon,
+.final-help-page .ad-summary-box .flower-icon{
   width: 30px;
   margin-right: 10px;
 }
 .page-help .first-help-page .create-ad-header .create-ad-inner-header,
-.page-help .second-help-page .create-ad-header .create-ad-inner-header,
-.page-help .final-help-page .ad-summary-box .ad-summary{
+.second-help-page .create-ad-header .create-ad-inner-header,
+.final-help-page .ad-summary-box .ad-summary{
   width: calc(100% - 40px);
   padding: 10px;
 }
 .page-help .first-help-page .create-ad-header .create-ad-inner-header .title-help-header,
-.page-help .second-help-page .create-ad-header .create-ad-inner-header .title-help-header,
-.page-help .final-help-page .ad-summary-box .ad-summary .title-help-header{
+.second-help-page .create-ad-header .create-ad-inner-header .title-help-header,
+.final-help-page .ad-summary-box .ad-summary .title-help-header{
   display: block;
   color: white;
   font-size: 120%;
@@ -1054,36 +1066,36 @@ body{
 }
 .page-help .first-help-page .create-ad-header .create-ad-inner-header .coin-icon,
 .page-help .first-help-page .create-ad-header .create-ad-inner-header .description,
-.page-help .second-help-page .create-ad-header .create-ad-inner-header .coin-icon,
-.page-help .second-help-page .create-ad-header .create-ad-inner-header .description,
-.page-help .second-help-page .create-ad-part-two .urgency .coin-icon,
-.page-help .second-help-page .create-ad-part-two .urgency .note,
-.page-help .second-help-page .create-ad-part-two .ad-time .coin-icon,
-.page-help .second-help-page .create-ad-part-two .ad-time .note,
-.page-help .final-help-page .ad-summary-box .ad-summary .coin-icon,
-.page-help .final-help-page .ad-summary-box .ad-summary .description{
+.second-help-page .create-ad-header .create-ad-inner-header .coin-icon,
+.second-help-page .create-ad-header .create-ad-inner-header .description,
+.second-help-page .create-ad-part-two .urgency .coin-icon,
+.second-help-page .create-ad-part-two .urgency .note,
+.second-help-page .create-ad-part-two .ad-time .coin-icon,
+.second-help-page .create-ad-part-two .ad-time .note,
+.final-help-page .ad-summary-box .ad-summary .coin-icon,
+.final-help-page .ad-summary-box .ad-summary .description{
   display: inline-block;
   vertical-align: middle;
 }
 .page-help .first-help-page .create-ad-header .create-ad-inner-header .coin-icon,
-.page-help .second-help-page .create-ad-header .create-ad-inner-header .coin-icon,
-.page-help .second-help-page .create-ad-part-two .urgency .coin-icon,
-.page-help .second-help-page .create-ad-part-two .ad-time .coin-icon,
-.page-help .final-help-page .ad-summary-box .ad-summary .coin-icon{
+.second-help-page .create-ad-header .create-ad-inner-header .coin-icon,
+.second-help-page .create-ad-part-two .urgency .coin-icon,
+.second-help-page .create-ad-part-two .ad-time .coin-icon,
+.final-help-page .ad-summary-box .ad-summary .coin-icon{
   width: 19px;
  }
 .page-help .first-help-page .create-ad-header .description,
-.page-help .second-help-page .create-ad-header .description,
-.page-help .final-help-page .ad-summary-box .ad-summary .description{
+.second-help-page .create-ad-header .description,
+.final-help-page .ad-summary-box .ad-summary .description{
   font-size: 80%;
 }
-.page-help .final-help-page .preview{
+.final-help-page .preview{
   padding: 5px 0;
 }
 .page-help .first-help-page .create-ad span,
 .page-help .first-help-page .create-ad .note,
-.page-help .final-help-page .preview .note,
-.page-help .final-help-page .preview .preview-title{
+.final-help-page .preview .note,
+.final-help-page .preview .preview-title{
   display: block;
   font-weight: bold;
   padding-left: 20px;
@@ -1091,43 +1103,43 @@ body{
   margin-top: 15px;
   line-height: 1.3;
 }
-.page-help .final-help-page .preview .preview-title{
+.final-help-page .preview .preview-title{
   font-size: 110%;
 }
-.page-help .final-help-page .preview .note{
+.final-help-page .preview .note{
   color: #3c2077;
   font-size: 90%;
 }
-.page-help .final-help-page .preview .help-request-box + .note{
+.final-help-page .preview .help-request-box + .note{
   margin-top: 30px;
 }
-.page-help .final-help-page .preview .note span{
+.final-help-page .preview .note span{
   display: block;
 }
-.page-help .final-help-page .help-buttons{
+.final-help-page .help-buttons{
   margin-top: 50px;
   margin-bottom: 20px;
   text-align: center;
 }
 .page-help .first-help-page .create-ad .btn-next-level,
-.page-help .second-help-page .help-buttons .undo,
-.page-help .second-help-page .help-buttons .confirm,
-.page-help .final-help-page .help-buttons .undo,
-.page-help .final-help-page .help-buttons .confirm{
+.second-help-page .help-buttons .undo,
+.second-help-page .help-buttons .confirm,
+.final-help-page .help-buttons .undo,
+.final-help-page .help-buttons .confirm{
   color: white;
   font-size: 140%;
   padding: 10px;
   width: 115px;
   border-radius: 5px;
 }
-.page-help .second-help-page .help-buttons .undo,
-.page-help .final-help-page .help-buttons .undo{
+.second-help-page .help-buttons .undo,
+.final-help-page .help-buttons .undo{
   display: inline-block;
   background-color: #383636;
   margin-left: 10px;
 }
-.page-help .second-help-page .help-buttons .confirm,
-.page-help .final-help-page .help-buttons .confirm{
+.second-help-page .help-buttons .confirm,
+.final-help-page .help-buttons .confirm{
   display: inline-block;
   background-color: #356dcf;
 }

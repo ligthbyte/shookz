@@ -1,9 +1,9 @@
 <div ng-controller="PageHelpCtrl">
 
-    <div class="first-help-page" style="display:none;">
+    <div class="first-help-page">
         <div class="create-ad-header">
-            <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon">
-            <div class="create-ad-inner-header">
+            <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon"><div
+             class="create-ad-inner-header">
                 <span class="title-help-header">יצירת מודעה חדשה</span>
                 <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon">
                 <span class="description">בעלות בסיסית של 10 מטבעות</span>
@@ -19,96 +19,7 @@
             <span>מיקום</span>
             <span class="create-ad-location">שיבת ציון 3, ראשון לציון</span>
             <a href="" class="replace">החלף מיקום</a>
-            <button class="btn-next-level">הבא</button>
-        </div>
-    </div>
-
-    <div class="second-help-page">
-        <div class="create-ad-header">
-            <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon"><div
-             class="create-ad-inner-header">
-                <span class="title-help-header">יצירת מודעה חדשה</span>
-                <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon">
-                <span class="description">בעלות בסיסית של 10 מטבעות</span>
-            </div>
-        </div>
-        <div class="create-ad-part-two">
-            <div class="urgency">
-                <label for="">רמת הדחיפות</label>
-                <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon"><span
-                 class="note">בחר את רמת הדחיפות של הבקשה, באפשרותך לקדם את המודעה לרמה קריטית בתוספת
-                    <span>5 מטבעות</span>
-                </span>
-                <div class="urgency-level">
-                    <button>נמוכה</button>
-                    <button>בינונית</button>
-                    <button>גבוהה</button>
-                    <button>קריטית 5</button>
-                </div>
-            </div>
-            <div class="scroll-box">
-                <label for="">רדיוס החיפוש</label>
-                <img src="./img/page-help/scroll-icn.png" alt="" class="movingIcon">  
-                <span>10 קילומטרים</span>
-            </div>
-            <div class="ad-time">
-                <label for="">זמן הופעת המודעה</label>
-                <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon"><span
-                 class="note">זמן הופעת המודעה באופן בסיסי הוא 72 שעות, יש באפשרותך לשדרג זמן זה בתוספת מטבעות.</span>
-                <div class="ad-hours">
-                    <button>72 שעות</button>
-                    <button>80 שעות</button>
-                    <button>95 שעות</button>
-                    <button>128 שעות</button>
-                </div>
-            </div>
-        </div>
-        <div class="help-buttons">
-            <button class="undo">חזור</button>
-            <button class="confirm">הבא</button>
-        </div>
-    </div>
-
-    <div class="final-help-page" style="display:none;">
-        <div class="ad-summary-box">
-            <img src="./img/page-help/flower.png" alt="אייקון" class="flower-icon"><div
-            class="ad-summary">
-            <span class="title">סיכום מודעה</span>
-            <img src="./img/page-help/coin.png" alt="מטבע" class="coin-icon">
-            <span class="description">עלות סופית של 15 מטבעות</span>
-            </div>
-        </div>
-        <div class="preview">
-            <span class="preview-title">תצוגה מקדימה של המודעה</span>
-            <span class="note">כך תוצג המודעה בלוח המודעות</span>
-            
-            <div class="help-request-box">
-                <!-- help-request-box CSS Was taken from Main Page CSS -->
-                <div class="inner-help-request-box">
-                    <img src="./img/avatars/2.png" alt="תמונת משתמש" class="user-image">
-                    <h6 class="header"> אני מחפש דוגווקר להיום </h6>
-                    <p class="content">
-                        הי אני חייב חייב חייב מישהו שיוציא את הכלב שלי לסיבוב, היום ב-19 בערב. מישהו??
-                    </p>
-                    <div class="help-request-info-box">
-                        <img src="img/help-request-box/clock-icon.png" alt="זמן הפרסום" class="request-icon"><span
-                        class="help-request-info request-time">לפני 7 דק'</span><img
-                        src="img/help-request-box/distance-icon.png" alt="מרחק" class="request-icon"><span
-                        class="help-request-info request-place">7.4 ק"מ ממך</span><img 
-                        src="img/help-request-box/coins-icon.png" alt="מטבעות" class="request-icon"><span 
-                        class="help-request-info request-payment">75</span>
-                    </div>
-                </div>
-            </div>
-            
-            <span class="note">המודעה שלך הינה מודעה מקודמת,
-                <span>היא תוצג בתדירות גבוהה יותר למשתמשים ותחת הסקשן "מומלץ".</span>
-            </span>
-            <span class="note">שים לב, מרגע אישור המודעה תוכל לצפות ולערוך אותה באיזור האישי - המודעות שלי.</span>
-        </div>
-        <div class="help-buttons">
-            <button class="undo">חזור</button>
-            <button class="confirm">אישור</button>
+            <button class="btn-next-level" ng-click="changeInnerView('help-pages/page-2')">הבא</button>
         </div>
     </div>
 
